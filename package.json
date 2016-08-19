@@ -1,0 +1,19 @@
+{
+  "name": "dramatic-note",
+  "version": "1.0.0",
+  "description": "Keep your dramatic notes with this simple SPA web app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heejongahn/dramatic-note.git"
+  },
+  "author": "Heejong Ahn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heejongahn/dramatic-note/issues"
+  },
+  "homepage": "https://github.com/heejongahn/dramatic-note#readme"
+}
