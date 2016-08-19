@@ -16,7 +16,7 @@ module.exports = {
   context: `${__dirname}/app/assets/js`,
   entry: './main.js',
   output: {
-    path: `${__dirname}/app/assets/static/build`,
+    path: `${__dirname}/app/static/build`,
     publicPath: '/build/',
     filename: '_bundle.js'
   },
@@ -34,7 +34,7 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel',
-        query: { presets: ['es2015', 'stage-3', 'react'] }
+        query: { presets: ['es2015', 'react'] }
       }
     ]
   },
