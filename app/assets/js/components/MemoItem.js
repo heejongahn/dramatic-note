@@ -1,3 +1,9 @@
+// TODO: Date 포매팅에 타임존 반영
+
+// TODO     : redux store에 연결
+// state    : -
+// dispatch : onCheckedChange => toggleSelectMemo
+
 import React from 'react';
 
 import { Link } from 'react-router';

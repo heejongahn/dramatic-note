@@ -1,3 +1,7 @@
+// TODO     : redux store 랑 연결
+// state    : memos[params.memoId] => memo 프로퍼티로 사용
+// dispatch : onMemoChange => updateMemo
+
 import React from 'react'
 
 const dummyMemos = {

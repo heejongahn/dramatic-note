@@ -1,3 +1,7 @@
+// TODO: params.labelId 파라미터 VisibleMemoList에 prop으로 던지기
+
+// TODO: 선택된 메모들 조작을 위한 컴포넌트 추가
+
 import React from 'react'
 import { Link } from 'react-router'
 
