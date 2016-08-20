@@ -41,12 +41,12 @@ export const UPDATE_MEMO = 'UPDATE_MEMO'
 export const DELETE_MEMO = 'DELETE_MEMO'
 export const TOGGLE_SELECT_MEMO = 'TOGGLE_SELECT_MEMO'
 
-export const localCreateMemo = (title, body) => (
-  { type: CREATE_MEMO, title, body, modifiedAt: Date.now() }
+export const localCreateMemo = (title, body, modifiedAt) => (
+  { type: CREATE_MEMO, title, body, modifiedAt }
 )
 
-export const localUpdateMemo = (id, title, body) => (
-  { type: UPDATE_MEMO, id, title, body, modifiedAt: Date.now() }
+export const localUpdateMemo = (id, title, body, modifiedAt) => (
+  { type: UPDATE_MEMO, id, title, body, modifiedAt }
 )
 
 export const localDeleteMemo = (id) => ({ type: DELETE_MEMO, id })
@@ -55,17 +55,22 @@ export const toggleSelectMemo = (id) => ({ type: TOGGLE_SELECT_MEMO, id })
 /* Async action creators */
 export const createMemo = (title, body) => {
   return (dispatch) => {
-    dispatch(localCreateMemo(title, body))
-    fetch('/memo', { method: 'POST', body: JSON.stringify({ title, body }) })
+    modifiedAt = Date.now()
+    dispatch(localCreateMemo(title, body, modifiedAt))
+    fetch('/memo', {
+      method: 'POST',
+      body: JSON.stringify({ title, body, modifiedAt })
+    })
   }
 }
 
 export const updateMemo = (id, title, body) => {
   return (dispatch) => {
-    dispatch(localCreateMemo(id, title, body))
+    modifiedAt = Date.now()
+    dispatch(localCreateMemo(id, title, body, modifiedAt))
     fetch(`/memo/${id}`, {
       method: 'PUT',
-      body: JSON.stringify({ id, title, body })
+      body: JSON.stringify({ id, title, body, modifiedAt })
     })
   }
 }
