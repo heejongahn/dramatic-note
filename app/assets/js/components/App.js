@@ -1,17 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router';
 
-const App = ({ children }) => {
+const App = () => {
   return (
-    <section>
-      <div id="label-list">
-        label-list
+    <section className="row">
+      <div id="label-list" className="col-md-4">
+        <p>label-list</p>
       </div>
-      <div id="memo-list">
-        memo-list
+      <div id="memo-list" className="col-md-4">
+        <p>memo-list</p>
       </div>
-      <div id="memo">
-        memo
+      <div id="memo" className="col-md-4">
+        <p>memo</p>
       </div>
     </section>
   )
