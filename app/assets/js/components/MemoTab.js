@@ -1,29 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const dummyMemoIds = ["1", "2", "3"]
+import MemoList from './MemoList'
+
+const dummyMemos = [
+  { id: 1, title: "메모1", body: "바디바디당근", checked: false, modifiedAt: Date.now() },
+  { id: 2, title: "메모2", body: "알레스 클라?", checked: false, modifiedAt: Date.now() },
+  { id: 3, title: "메모3", body: "드라마앤컴퍼니", checked: false, modifiedAt: Date.now() }
+]
 
 const MemoTab = ({ children, params }) => {
   let memoList;
 
   if (params.labelName) {
-    memoList = dummyMemoIds.map(memoId =>
-      <li className="list-group-item">
-        <Link to={"/"+params.labelName+"/"+memoId}>
-          {params.labelName + " memo" + memoId}
-        </Link>
-      </li>
-    );
+    memoList = dummyMemos;
   } else {
-    memoList = null;
+    memoList = [];
   }
 
   return (
     <div id="memo-tab" className="col-md-8">
       <div id="memo-list" className="col-md-6">
-        <ul className="list-group">
-          {memoList}
-        </ul>
+        <MemoList memos={memoList} path={params.labelName}/>
       </div>
       <div id="memo" className="col-md-6">
         { children }
