@@ -10,18 +10,10 @@ const dummyMemos = [
 ]
 
 const MemoTab = ({ children, params }) => {
-  let memoList;
-
-  if (params.labelName) {
-    memoList = dummyMemos;
-  } else {
-    memoList = [];
-  }
-
   return (
     <div id="memo-tab" className="col-md-8">
       <div id="memo-list" className="col-md-6">
-        <MemoList memos={memoList} path={params.labelName}/>
+        <MemoList memos={dummyMemos} path={params.labelName}/>
       </div>
       <div id="memo" className="col-md-6">
         { children }
