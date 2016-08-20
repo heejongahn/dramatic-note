@@ -1,3 +1,5 @@
 import App from './App'
+import MemoTab from './MemoTab'
+import Memo from './Memo'
 
-export { App }
+export { App, MemoTab, Memo }

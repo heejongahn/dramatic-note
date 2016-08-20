@@ -1,17 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router';
 
-const App = () => {
+const dummyLabelNames = ["label1", "label2", "label3"]
+
+const App = ({ children }) => {
   return (
     <section className="row">
       <div id="label-list" className="col-md-4">
-        <p>label-list</p>
+        <ul className="list-group">
+          {dummyLabelNames.map(labelName =>
+            <li className="list-group-item">
+              <Link to={"/"+labelName}>
+                {labelName}
+              </Link>
+            </li>
+          )}
+        </ul>
       </div>
-      <div id="memo-list" className="col-md-4">
-        <p>memo-list</p>
-      </div>
-      <div id="memo" className="col-md-4">
-        <p>memo</p>
-      </div>
+      { children }
     </section>
   )
 }
