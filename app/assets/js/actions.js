@@ -1,35 +1,86 @@
 /*
+ * General api call and dispatch logic
+ */
+
+const apiCallAndDispatch = (url, method, body, actionCreator) => {
+  const headers = new Headers({ "Content-type": "application/json" })
+
+  fetch(url, { method, headers, body})
+  .then(response => response.json())
+  .then(result =>
+    dispatch(actionCreator(result['result']))
+  )
+}
+
+/*
+ * Initial sync with db
+ */
+
+export const syncWithDB = () => {
+  return (dispatch) => {
+    apiCallAndDispatch(
+      '/all_data',
+      'GET',
+      null,
+      populate
+    )
+  }
+}
+
+export const POPULATE = 'POPULATE'
+export const populate = ({ memos, labels }) => (
+  { type: POPULATE, memos, labels }
+)
+
+
+/*
  * Actions on Label
  */
 export const CREATE_LABEL = 'CREATE_LABEL'
 export const UPDATE_LABEL = 'UPDATE_LABEL'
 export const DELETE_LABEL = 'DELETE_LABEL'
-export const SELECT_LABEL = 'SELECT_LABEL'
 
-export const localCreateLabel = (name) => ({ type: CREATE_LABEL, name })
-export const localUpdateLabel = (id, name) => ({ type: UPDATE_LABEL, id, name })
-export const localDeleteLabel = (id) => ({ type: DELETE_LABEL, id })
-export const localSelectLabel = (id) => ({ type: SELECT_LABEL, id })
+export const localCreateLabel = ({ id, label }) => (
+  { type: CREATE_LABEL, id, label })
+
+export const localUpdateLabel = ({ id, label }) => (
+  { type: UPDATE_LABEL, id, label }
+)
+
+export const localDeleteLabel = ({ id }) => (
+  { type: DELETE_LABEL, id })
 
 /* Async action creators */
 export const createLabel = (name) => {
   return (dispatch) => {
-    dispatch(localCreateLabel(name))
-    fetch('/label', { method: 'POST', body: JSON.stringify({ name }) })
+    apiCallAndDispatch(
+      '/label',
+      'POST',
+      JSON.stringify({ name }),
+      localCreateLabel
+    )
   }
 }
 
 export const updateLabel = (id, name) => {
   return (dispatch) => {
-    dispatch(localUpdateLabel(id, name))
-    fetch(`/label/${id}`, { method: 'PUT', body: JSON.stringify({ name }) })
+    apiCallAndDispatch(
+      `/label/${id}`,
+      'PUT',
+      JSON.stringify({ name }),
+      localUpdateLabel
+    )
   }
 }
 
 export const deleteLabel = (id) => {
   return (dispatch) => {
-    dispatch(localDeleteLabel(id))
-    fetch(`/label/${id}`, { method: 'DELETE' })
+    apiCallAndDispatch(
+      `/label/${id}`,
+      'DELETE',
+      null,
+      localDeleteLabel
+    )
   }
 }
 
@@ -41,44 +92,52 @@ export const UPDATE_MEMO = 'UPDATE_MEMO'
 export const DELETE_MEMO = 'DELETE_MEMO'
 export const TOGGLE_SELECT_MEMO = 'TOGGLE_SELECT_MEMO'
 
-export const localCreateMemo = (title, body, modifiedAt) => (
-  { type: CREATE_MEMO, title, body, modifiedAt }
+export const localCreateMemo = ({ id, memo }) => (
+  { type: CREATE_MEMO, id, memo })
+
+export const localUpdateMemo = ({ id, memo }) => (
+  { type: UPDATE_MEMO, id, :memo }
 )
 
-export const localUpdateMemo = (id, title, body, modifiedAt) => (
-  { type: UPDATE_MEMO, id, title, body, modifiedAt }
-)
+export const localDeleteMemo = ({ id }) => (
+  { type: DELETE_MEMO, id })
 
-export const localDeleteMemo = (id) => ({ type: DELETE_MEMO, id })
-export const toggleSelectMemo = (id) => ({ type: TOGGLE_SELECT_MEMO, id })
+export const toggleSelectMemo = ({ id }) => (
+  { type: TOGGLE_SELECT_MEMO, id })
 
 /* Async action creators */
 export const createMemo = (title, body) => {
   return (dispatch) => {
     modifiedAt = Date.now()
-    dispatch(localCreateMemo(title, body, modifiedAt))
-    fetch('/memo', {
-      method: 'POST',
-      body: JSON.stringify({ title, body, modifiedAt })
-    })
+    apiCallAndDispatch(
+      '/memo',
+      'POST',
+      JSON.stringify({ title, body, modifiedAt }),
+      localCreatememo
+    )
   }
 }
 
 export const updateMemo = (id, title, body) => {
   return (dispatch) => {
     modifiedAt = Date.now()
-    dispatch(localCreateMemo(id, title, body, modifiedAt))
-    fetch(`/memo/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify({ id, title, body, modifiedAt })
-    })
+    apiCallAndDispatch(
+      `/memo/${id}`,
+      'PUT',
+      JSON.stringify({ title, body, modifiedAt }),
+      localUpdatememo
+    )
   }
 }
 
 export const deleteMemo = (id) => {
   return (dispatch) => {
-    dispatch(localDeleteMemo(id))
-    fetch(`/memo/${id}`, { method: 'DELETE' })
+    apiCallAndDispatch(
+      `/memo/${id}`,
+      'DELETE',
+      null,
+      localDeletememo
+    )
   }
 }
 
@@ -87,32 +146,34 @@ export const deleteMemo = (id) => {
  * Actions on Memos
  */
 export const ADD_LABEL_TO_MEMOS = 'ADD_LABEL_TO_MEMOS'
-export const REMOVE_LABEL_TO_MEMOS = 'REMOVE_LABEL_TO_MEMOS'
+export const REMOVE_LABEL_FROM_MEMOS = 'REMOVE_LABEL_FROM_MEMOS'
 
-export const localAddLabelToMemos = (labelId) => (
-  { type: ADD_LABEL_TO_MEMOS, labelId }
+export const localAddLabelToMemos = ({ id, label }) => (
+  { type: ADD_LABEL_TO_MEMOS, id, label }
 )
 
-export const localRemoveLabelToMemos = (labelId) => (
-  { type: REMOVE_LABEL_TO_MEMOS, labelId }
+export const localRemoveLabelFromMemos = ({ id, label }) => (
+  { type: REMOVE_LABEL_FROM_MEMOS, id, label }
 )
 
-export const addLabelToMemos = (labelId, memoIds) => {
+export const addLabelToMemos = (memoIds) => {
   return (dispatch) => {
-    localAddLabelToMemos(labelId)
-    fetch(`/label/${labelId}/memos`, {
-      method: 'POST',
-      body: { labelId, memoIds }
-    })
+    apiCallAndDispatch(
+      `/label/${labelId}/memos`,
+      'POST',
+      JSON.stringify(memoIds),
+      localAddLabelToMemos
+    )
   }
 }
 
-export const addLabelToMemos = (labelId, memoIds) => {
+export const removeLabelFromMemos = (labelId, memoIds) => {
   return (dispatch) => {
-    localRemoveLabelToMemos(labelId)
-    fetch(`/label/${labelId}/memos`, {
-      method: 'DELETE',
-      body: { memoIds }
-    })
+    apiCallAndDispatch(
+      `/label/${labelId}/memos`,
+      'DELETE',
+      JSON.stringify(memoIds),
+      localRemoveLabelFromMemos
+    )
   }
 }
