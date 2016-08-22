@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
+import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from 'react-router'
 
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -33,7 +33,7 @@ ReactDom.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={MemoTab} />
+        <IndexRedirect to="all" />
         <Route path=":labelName" component={MemoTab}>
           <IndexRoute component={Memo} />
           <Route path=":memoId" component={Memo} />
