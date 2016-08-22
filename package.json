@@ -32,9 +32,11 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
     "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "redux-devtools": "^3.3.1"
