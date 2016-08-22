@@ -34,12 +34,10 @@ ReactDom.render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={MemoTab} />
-        {dummyLabelNames.map(labelName =>
-          <Route path=":labelName" component={MemoTab}>
-            <IndexRoute component={Memo} />
-            <Route path=":memoId" component={Memo} />
-          </Route>
-        )}
+        <Route path=":labelName" component={MemoTab}>
+          <IndexRoute component={Memo} />
+          <Route path=":memoId" component={Memo} />
+        </Route>
       </Route>
     </Router>
   </Provider>,
