@@ -1,25 +1,24 @@
-// TODO: 선택된 메모들 조작을 위한 컴포넌트 추가
-
 import React from 'react'
 
-import MemoList from '../components/MemoList'
+import MemoItem from '../components/MemoItem'
 
 const MemoContainer = ({ children, params, memos }) => {
-  let visibleMemos = memos
-
-  if (params.labelId != "all") {
-    visibleMemos = Object.keys(memos)
-      .filter(id => memos[id].labelIds.includes(params.labelId))
-      .map(id => memos[id])
-  }
+  const labelId = params.labelId
+  const MemoPanel = Object.keys(memos).includes(params.memoId)
+    ? React.cloneElement(children, { memo: memos[params.memoId] })
+    : children
 
   return (
     <div id="memo-tab" className="col-md-8">
       <div id="memo-list" className="col-md-6">
-        <MemoList memos={visibleMemos} path={params.labelId}/>
+        <ul className="list-group">
+          {Object.keys(memos)
+            .filter(id => labelId == "all" || memos[id].labelIds.includes(labelId))
+            .map(id => <MemoItem memo={memos[id]} to={`/${labelId}/${id}`} />) }
+        </ul>
       </div>
       <div id="memo" className="col-md-6">
-        {React.cloneElement(children, { memo: memos[params.memoId] })}
+        { MemoPanel }
       </div>
     </div>
   )
