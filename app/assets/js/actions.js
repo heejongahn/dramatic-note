@@ -2,30 +2,19 @@
  * General api call and dispatch logic
  */
 
-const apiCallAndDispatch = (url, method, body, actionCreator) => {
+const apiCallAndDispatch = (url, method, body, actionCreator, dispatch) => {
   const headers = new Headers({ "Content-type": "application/json" })
 
-  fetch(url, { method, headers, body})
+  return fetch(url, { method, headers, body})
   .then(response => response.json())
-  .then(result =>
+  .then(result => {
     dispatch(actionCreator(result['result']))
-  )
+  })
 }
 
 /*
  * Initial sync with db
  */
-
-export const syncWithDB = () => {
-  return (dispatch) => {
-    apiCallAndDispatch(
-      '/all_data',
-      'GET',
-      null,
-      populate
-    )
-  }
-}
 
 export const POPULATE = 'POPULATE'
 export const populate = ({ memos, labels }) => (
@@ -57,7 +46,8 @@ export const createLabel = (name) => {
       '/label',
       'POST',
       JSON.stringify({ name }),
-      localCreateLabel
+      localCreateLabel,
+      dispatch
     )
   }
 }
@@ -68,7 +58,8 @@ export const updateLabel = (id, name) => {
       `/label/${id}`,
       'PUT',
       JSON.stringify({ name }),
-      localUpdateLabel
+      localUpdateLabel,
+      dispatch
     )
   }
 }
@@ -79,7 +70,8 @@ export const deleteLabel = (id) => {
       `/label/${id}`,
       'DELETE',
       null,
-      localDeleteLabel
+      localDeleteLabel,
+      dispatch
     )
   }
 }
@@ -96,7 +88,7 @@ export const localCreateMemo = ({ id, memo }) => (
   { type: CREATE_MEMO, id, memo })
 
 export const localUpdateMemo = ({ id, memo }) => (
-  { type: UPDATE_MEMO, id, :memo }
+  { type: UPDATE_MEMO, id, memo }
 )
 
 export const localDeleteMemo = ({ id }) => (
@@ -113,7 +105,8 @@ export const createMemo = (title, body) => {
       '/memo',
       'POST',
       JSON.stringify({ title, body, modifiedAt }),
-      localCreatememo
+      localCreatememo,
+      dispatch
     )
   }
 }
@@ -125,7 +118,8 @@ export const updateMemo = (id, title, body) => {
       `/memo/${id}`,
       'PUT',
       JSON.stringify({ title, body, modifiedAt }),
-      localUpdatememo
+      localUpdatememo,
+      dispatch
     )
   }
 }
@@ -136,7 +130,8 @@ export const deleteMemo = (id) => {
       `/memo/${id}`,
       'DELETE',
       null,
-      localDeletememo
+      localDeletememo,
+      dispatch
     )
   }
 }
@@ -162,7 +157,8 @@ export const addLabelToMemos = (memoIds) => {
       `/label/${labelId}/memos`,
       'POST',
       JSON.stringify(memoIds),
-      localAddLabelToMemos
+      localAddLabelToMemos,
+      dispatch
     )
   }
 }
@@ -173,7 +169,8 @@ export const removeLabelFromMemos = (labelId, memoIds) => {
       `/label/${labelId}/memos`,
       'DELETE',
       JSON.stringify(memoIds),
-      localRemoveLabelFromMemos
+      localRemoveLabelFromMemos,
+      dispatch
     )
   }
 }
