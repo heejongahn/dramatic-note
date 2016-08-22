@@ -1,3 +1,4 @@
 node_modules/
 **/*.pyc
 app/static/build/
+dramatic.db
