@@ -5,16 +5,18 @@ import React from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
-import LabelList from '../components/LabelList';
+import LabelContainer from './LabelContainer';
 
-const dummyLabelNames = ["label1", "label2", "label3"]
+const dummyLabels = {
+  1: { name: "라벨 1", memoIds: [1,2,3,4,5]},
+  2: { name: "라벨 2", memoIds: [2,3,4]},
+  3: { name: "라벨 3", memoIds: [6,4,5,3]}
+}
 
 const App = ({ children, memos, labels }) => {
   return (
     <section className="row">
-      <div id="label-list" className="col-md-4">
-        <LabelList labelNames={dummyLabelNames} />
-      </div>
+      <LabelContainer labels={dummyLabels} />
       { children }
     </section>
   )

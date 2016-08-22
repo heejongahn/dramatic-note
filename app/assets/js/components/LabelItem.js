@@ -7,16 +7,10 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const LabelItem = ({ labelName }) => {
-  let selectLabelLink;
-  if (!labelName) {
-    selectLabelLink = <Link to="/">모든 라벨 보기</Link>;
-  } else {
-    selectLabelLink = <Link to={`/${labelName}`}>{labelName}</Link>
-  }
+const LabelItem = ({ id, label }) => {
   return (
     <li className="list-group-item">
-      {selectLabelLink}
+      <Link to={`/${id}`}>{label.name} <span>[{label.numMemos}]</span></Link>
     </li>
   )
 }
