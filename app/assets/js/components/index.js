@@ -1,4 +1,5 @@
-import MemoTab from './MemoTab'
-import Memo from './Memo'
+import LabelItem from './LabelItem'
+import MemoItem from './MemoItem'
+import MemoPanel from './MemoPanel'
 
-export { MemoTab, Memo }
+export { LabelItem, MemoItem, MemoPanel }

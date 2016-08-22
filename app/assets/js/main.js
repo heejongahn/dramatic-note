@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
 import { App, MemoContainer } from './containers';
-import { MemoTab, Memo } from './components';
+import { MemoPanel } from './components';
 import reducers from './reducers'
 import { populate } from './actions'
 
@@ -35,8 +35,8 @@ ReactDom.render(
       <Route path="/" component={App}>
         <IndexRedirect to="all" />
         <Route path=":labelId" component={MemoContainer}>
-          <IndexRoute component={Memo} />
-          <Route path=":memoId" component={Memo} />
+          <IndexRoute component={MemoPanel} />
+          <Route path=":memoId" component={MemoPanel} />
         </Route>
       </Route>
     </Router>
