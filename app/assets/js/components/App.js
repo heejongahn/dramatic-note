@@ -2,13 +2,14 @@
 // TODO: params.labelId 파라미터 LabelList 한테 selectedLabelId로 넘기기
 
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router'
+import { connect } from 'react-redux'
 
 import LabelList from './LabelList';
 
 const dummyLabelNames = ["label1", "label2", "label3"]
 
-const App = ({ children }) => {
+const App = ({ children, memos, labels }) => {
   return (
     <section className="row">
       <div id="label-list" className="col-md-4">
@@ -19,4 +20,10 @@ const App = ({ children }) => {
   )
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({}, state, ownProps)
+}
+
+export default connect(
+  mapStateToProps
+)(App);
