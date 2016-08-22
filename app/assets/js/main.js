@@ -13,9 +13,6 @@ import { populate } from './actions'
 
 import 'bootstrap/dist/css/bootstrap.css';
 
-const dummyLabelNames = ["label1", "label2", "label3"]
-const dummyMemoIds = [1, 2, 3]
-
 const store = createStore(
   reducers,
   applyMiddleware(thunkMiddleware)
