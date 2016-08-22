@@ -13,7 +13,7 @@ const App = ({ children, memos, labels }) => {
       <LabelContainer
         labels={labels}
         totalNumMemos={Object.keys(memos).length} />
-      { children }
+      {React.cloneElement(children, { memos })}
     </section>
   )
 }

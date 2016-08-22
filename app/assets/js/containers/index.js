@@ -1,3 +1,4 @@
 import App from './App'
+import MemoContainer from './MemoContainer'
 
-export { App }
+export { App, MemoContainer }
