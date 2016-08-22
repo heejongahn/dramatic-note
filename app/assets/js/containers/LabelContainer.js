@@ -31,7 +31,7 @@ const LabelContainer = ({ labels, totalNumMemos }) => {
 
 const mapStateToProps = (state, ownProps) => (
   Object.assign({},
-    { labels: state.labels, numMemos: Object.keys(state.memos).length },
+    { numMemos: Object.keys(state.memos).length },
     ownProps
   )
 )
