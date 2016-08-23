@@ -47,9 +47,10 @@ const reducers = (state = initialState, action) => {
 
     case DELETE_LABEL:
       return {
-        labels: Object.keys(state.labels)
+        labels: Object.assign({}, ...Object.keys(state.labels)
           .filter(id => id != action.id)
-          .map(id => state.labels[id]),
+          .map(id => ({ [id]: state.labels[id]}))
+          ),
 
         memos: Object.keys(state.memos)
           .map(id => collectObject(
@@ -83,9 +84,10 @@ const reducers = (state = initialState, action) => {
 
     case DELETE_MEMO:
       return {
-        memos: Object.keys(state.memos)
+        memos: Object.assign({}, ...Object.keys(state.memos)
           .filter(id => id != action.id)
-          .map(id => state.memos[id]),
+          .map(id => ({ [id]: state.memos[id] }))
+        ),
 
         labels: Object.keys(state.labels)
           .map(id => collectObject(
