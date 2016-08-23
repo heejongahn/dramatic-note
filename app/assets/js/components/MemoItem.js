@@ -3,20 +3,27 @@
 import React from 'react';
 
 import { Link } from 'react-router';
+import { connect } from 'react-redux'
 
-const MemoItem = ({ memo, to }) => {
+import { toggleSelectMemo } from '../actions'
+
+const MemoItem = ({ memo, id, labelId, dispatch }) => {
   return (
     <li className="list-group-item">
-      <Link to={to}>
-        <div className="memo-item">
-          <input type="checkbox" value={memo.checked} />
-          <b>{memo.title}</b>
-          <p>{memo.body}</p>
-          <p>{new Date(memo.modifiedAt).toISOString().slice(0, 10)}</p>
-        </div>
-      </Link>
+      <div className="memo-item">
+        <input
+          type="checkbox"
+          value={memo.checked}
+          onChange={()=>dispatch(toggleSelectMemo({ id }))}
+        />
+        <Link to={`/${labelId}/${id}`}>
+            <b>{memo.title}</b>
+            <p>{memo.body}</p>
+        </Link>
+        <p>{new Date(memo.modifiedAt).toISOString().slice(0, 10)}</p>
+      </div>
     </li>
   )
 }
 
-export default MemoItem
+export default connect()(MemoItem)

@@ -17,7 +17,7 @@ const MemoContainer = ({ children, params, memos }) => {
         <ul className="list-group">
           {visibleMemoIds
             .map(id =>
-              <MemoItem key={id} memo={memos[id]} to={`/${labelId}/${id}`} />
+              <MemoItem key={id} memo={memos[id]} id={id} labelId={labelId} />
             )}
         </ul>
       </div>
