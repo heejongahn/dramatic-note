@@ -1,3 +1,8 @@
+body * {
+  max-height: calc(100vh - 4em);
+  overflow-y: scroll;
+}
+
 input.memo-title {
   width: 100%;
   background: 0;
