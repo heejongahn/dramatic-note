@@ -9,7 +9,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { createLabel } from '../actions'
+
 import LabelItem from '../components/LabelItem'
+import AddLabelItem from './AddLabelItem'
 
 const LabelContainer = ({ labels, totalNumMemos }) => {
   const allMemosLabel = { name: "모든 메모", numMemos: totalNumMemos}
@@ -24,6 +27,7 @@ const LabelContainer = ({ labels, totalNumMemos }) => {
           }
           return <LabelItem id={id} label={label} />
         })}
+        <AddLabelItem />
       </ul>
     </div>
   )
