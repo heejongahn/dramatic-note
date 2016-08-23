@@ -13,7 +13,7 @@
   labels: {
     "1": {
       "name"    : "STRING - Label name",
-      "memoIds" : "[NUMBER] - A list of memos' Ids related with the label"
+      "memoIds" : "[STRING] - A list of memos' Ids related with the label"
     }
   }
 
@@ -26,7 +26,7 @@
       "body"        : "STRING - Memo body",
       "checked"     : "BOOLEAN - Flag indicating if the memo is checked or not",
       "modifiedAt"  : "NUMBER - Last modified time in unix time",
-      "labelIds"    : "[NUMBER] - A list of labels' Ids related with the memo"
+      "labelIds"    : "[STRING] - A list of labels' Ids related with the memo"
     }
   }
 
