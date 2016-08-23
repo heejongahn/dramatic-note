@@ -15,7 +15,7 @@ if __name__ == "__main__":
     for i in range(30):
         memo = Memo("{}번째 메모".format(i + 1),
                 "내용내용내용내용내용내용내용내용내용",
-                int(time.time() * 1000),
+                int(time.time() * 1000 * 0.95),
                 [])
         db.session.add(memo)
         db.session.commit()
