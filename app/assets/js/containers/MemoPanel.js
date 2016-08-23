@@ -2,10 +2,14 @@ import React from 'react'
 
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { updateMemo } from '../actions'
+import { updateMemo, deleteMemo } from '../actions'
 
 
 const MemoPanel = ({ params, memo, dispatch } ) => {
+  const onDeleteMemo = (id) => {
+    dispatch(deleteMemo(id))
+  }
+
   if (params.memoId && memo) {
     return (
       <div className="panel panel-default memo">
@@ -17,7 +21,10 @@ const MemoPanel = ({ params, memo, dispatch } ) => {
               className="btn btn-default btn-xs memo-edit">
               수정
             </Link>
-            <button className="btn btn-default btn-xs memo-delete">삭제</button>
+            <button className="btn btn-default btn-xs memo-delete"
+              onClick={()=>onDeleteMemo(params.memoId)}>
+              삭제
+            </button>
           </div>
         </div>
         <div className="panel-body">
