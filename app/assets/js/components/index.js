@@ -1,4 +1,5 @@
+import EmptyMemoList from './EmptyMemoList'
 import LabelItem from './LabelItem'
 import MemoItem from './MemoItem'
 
-export { LabelItem, MemoItem }
+export { EmptyMemoList, LabelItem, MemoItem }
