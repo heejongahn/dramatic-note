@@ -53,13 +53,13 @@ def edit_or_delete_label(id):
 
         result = {'id': id, 'label': label_to_json(label)}
 
-        return jsonify(result=result)
-
     else:
         db.session.delete(label)
         db.session.commit()
 
         result = {'id': id}
+
+    return jsonify(result=result)
 
 @app.route('/memo', methods=['POST'])
 def create_memo():
@@ -87,13 +87,14 @@ def edit_or_delete_memo(id):
 
         result = {'id': id, 'memo': memo_to_json(memo)}
 
-        return jsonify(result=result)
 
     else:
         db.session.delete(memo)
         db.session.commit()
 
         result = {'id': id}
+
+    return jsonify(result=result)
 
 @app.route('/label/<labelId>/memos', methods=['POST', 'DELETE'])
 def add_or_remove_label(labelId):
@@ -118,3 +119,5 @@ def add_or_remove_label(labelId):
 
     result = {'id': labelId, 'label': label_to_json(label), 'memoIds':
             payload['memoIds']}
+
+    return jsonify(result=result)
