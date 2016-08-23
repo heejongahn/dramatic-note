@@ -1,0 +1,51 @@
+input.memo-title {
+  width: 100%;
+  background: 0;
+  border: 0;
+}
+
+textarea.memo-body {
+  resize: none;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+div.memo-body {
+  white-space: pre-line;
+}
+
+a.memo-edit {
+  margin-left: 2em;
+}
+
+button.memo-delete {
+  margin: auto 0.5em;
+}
+
+b.memo-item-title {
+  font-size: 1.2em;
+}
+
+p.memo-item-preview {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+span.memo-item-date, span.memo-date {
+  font-size: 0.8em;
+}
+
+html a {
+  color: black;
+
+  & :link, :visited, :hover, :active {
+    text-decoration: none;
+  }
+}
+
+div.container {
+  margin: 2em auto;
+}

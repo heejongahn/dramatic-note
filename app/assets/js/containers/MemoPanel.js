@@ -10,23 +10,23 @@ const MemoPanel = ({ params, memo, dispatch } ) => {
     return (
       <div className="panel panel-default memo">
         <div className="panel-heading">
-          <b className="panel-title memo-title">
-            {memo.title}
-          </b>
-          <Link
-            to={`/${params.labelId}/${params.memoId}/edit`}
-            className="btn btn-default btn-sm">
-            수정
-          </Link>
-          <button className="btn btn-default btn-sm">삭제</button>
+          <div className="panel-title">
+            <span className="memo-title">{memo.title}</span>
+            <Link
+              to={`/${params.labelId}/${params.memoId}/edit`}
+              className="btn btn-default btn-xs memo-edit">
+              수정
+            </Link>
+            <button className="btn btn-default btn-xs memo-delete">삭제</button>
+          </div>
         </div>
         <div className="panel-body">
           <div className="memo-body">
             {memo.body}
           </div>
-          <div className="memo-date">
-            {new Date(memo.modifiedAt).toISOString().slice(0, 10)}
-          </div>
+          <span className="memo-date">
+            마지막 수정 날짜 : {new Date(memo.modifiedAt).toISOString().slice(0, 10)}
+          </span>
         </div>
       </div>
     )

@@ -10,6 +10,7 @@ import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers';
 import reducers from './reducers'
 import { populate } from './actions'
 
+import '../css/main.scss'
 import 'bootstrap/dist/css/bootstrap.css';
 
 const store = createStore(
