@@ -25,7 +25,7 @@ const LabelContainer = ({ labels, totalNumMemos }) => {
             name: labels[id].name,
             numMemos: labels[id].memoIds.length
           }
-          return <LabelItem id={id} label={label} />
+          return <LabelItem key={id} id={id} label={label} />
         })}
         <AddLabelItem />
       </ul>

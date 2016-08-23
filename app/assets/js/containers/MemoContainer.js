@@ -14,7 +14,7 @@ const MemoContainer = ({ children, params, memos }) => {
         <ul className="list-group">
           {Object.keys(memos)
             .filter(id => labelId == "all" || memos[id].labelIds.includes(labelId))
-            .map(id => <MemoItem memo={memos[id]} to={`/${labelId}/${id}`} />) }
+            .map(id => <MemoItem key={id} memo={memos[id]} to={`/${labelId}/${id}`} />) }
         </ul>
       </div>
       <div id="memo" className="col-md-6">
