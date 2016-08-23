@@ -6,8 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
-import { App, MemoContainer } from './containers';
-import { MemoPanel } from './components';
+import { App, MemoContainer, MemoPanel } from './containers';
 import reducers from './reducers'
 import { populate } from './actions'
 

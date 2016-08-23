@@ -1,5 +1,6 @@
+import AddLabelItem from './AddLabelItem'
 import App from './App'
 import MemoContainer from './MemoContainer'
-import AddLabelItem from './AddLabelItem'
+import MemoPanel from './MemoPanel'
 
-export { App, MemoContainer, AddLabelItem }
+export { AddLabelItem, App, MemoContainer, MemoPanel }
