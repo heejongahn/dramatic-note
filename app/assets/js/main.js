@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk'
 
 import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers';
 import reducers from './reducers'
-import { populate } from './actions'
+import { syncWithDB } from './actions'
 
 import '../css/main.scss'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -18,13 +18,7 @@ const store = createStore(
   applyMiddleware(thunkMiddleware)
 )
 
-const headers = new Headers({ "Content-type": "application/json" })
-
-fetch('/all_data', { method: 'GET', headers})
-.then(response => response.json())
-.then(result => {
-  return store.dispatch(populate(result['result']))
-})
+store.dispatch(syncWithDB())
 
 ReactDom.render(
   <Provider store={store}>

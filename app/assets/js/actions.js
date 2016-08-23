@@ -16,6 +16,19 @@ const apiCallAndDispatch = (url, method, body, actionCreator, dispatch) => {
  * Initial sync with db
  */
 
+export const syncWithDB = () => {
+  return (dispatch) => {
+    apiCallAndDispatch(
+      '/all_data',
+      'GET',
+      null,
+      populate,
+      dispatch
+    )
+  }
+}
+
+
 export const POPULATE = 'POPULATE'
 export const populate = ({ memos, labels }) => (
   { type: POPULATE, memos, labels }
