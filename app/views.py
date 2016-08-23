@@ -116,4 +116,5 @@ def add_or_remove_label(labelId):
     db.session.add(label)
     db.session.commit()
 
-    result = {'id': labelId, 'label': label_to_json(label)}
+    result = {'id': labelId, 'label': label_to_json(label), 'memoIds':
+            payload['memoIds']}

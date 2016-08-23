@@ -143,15 +143,15 @@ export const deleteMemo = (id) => {
 export const ADD_LABEL_TO_MEMOS = 'ADD_LABEL_TO_MEMOS'
 export const REMOVE_LABEL_FROM_MEMOS = 'REMOVE_LABEL_FROM_MEMOS'
 
-export const localAddLabelToMemos = ({ id, label }) => (
-  { type: ADD_LABEL_TO_MEMOS, id, label }
+export const localAddLabelToMemos = ({ id, label, memoIds }) => (
+  { type: ADD_LABEL_TO_MEMOS, id, label, memoIds }
 )
 
-export const localRemoveLabelFromMemos = ({ id, label }) => (
-  { type: REMOVE_LABEL_FROM_MEMOS, id, label }
+export const localRemoveLabelFromMemos = ({ id, label, memoIds }) => (
+  { type: REMOVE_LABEL_FROM_MEMOS, id, label, memoIds }
 )
 
-export const addLabelToMemos = (memoIds) => {
+export const addLabelToMemos = (labelId, memoIds) => {
   return (dispatch) => {
     apiCallAndDispatch(
       `/label/${labelId}/memos`,
