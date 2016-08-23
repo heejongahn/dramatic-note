@@ -9,7 +9,7 @@ const initialState = {
   memos: {}
 }
 
-const collectObjects = (first, second) => {
+const collectObject = (first, second) => {
   return Object.assign({}, first, second)
 }
 
@@ -24,10 +24,10 @@ const reducers = (state = initialState, action) => {
       return ({ memos, labels })
 
     case CREATE_LABEL:
-      return collectObjects(
+      return collectObject(
         state,
         {
-          labels: collectObjects(
+          labels: collectObject(
             state.labels,
             { [action.id]: action.label}
           )
@@ -35,10 +35,10 @@ const reducers = (state = initialState, action) => {
       )
 
     case UPDATE_LABEL:
-      return collectObjects(
+      return collectObject(
         state,
         {
-          labels: collectObjects(
+          labels: collectObject(
             state.labels,
             { [action.id]: action.label}
           )
@@ -52,7 +52,7 @@ const reducers = (state = initialState, action) => {
           .map(id => state.labels[id]),
 
         memos: Object.keys(state.memos)
-          .map(id => collectObjects(
+          .map(id => collectObject(
             state.memos[i],
             { labelids: state.memos[i].labelIds.filter(id => id != action.id) }
           )
@@ -60,7 +60,7 @@ const reducers = (state = initialState, action) => {
       }
 
     case CREATE_MEMO:
-      return collectObjects(
+      return collectObject(
         state,
         {
           memos: collectObject(
@@ -71,7 +71,7 @@ const reducers = (state = initialState, action) => {
       )
 
     case UPDATE_MEMO:
-      return collectObjects(
+      return collectObject(
         state,
         {
           memos: collectObject(
@@ -88,7 +88,7 @@ const reducers = (state = initialState, action) => {
           .map(id => state.memos[id]),
 
         labels: Object.keys(state.labels)
-          .map(id => collectObjects(
+          .map(id => collectObject(
             state.labels[id],
             { memoIds: state.labels[id].memoIds.filter(id => id != action.id) }
           )
@@ -96,7 +96,7 @@ const reducers = (state = initialState, action) => {
       }
 
     case TOGGLE_SELECT_MEMO:
-      return collectObjects(
+      return collectObject(
         state,
         {
           memos: collectObject(
@@ -119,7 +119,7 @@ const reducers = (state = initialState, action) => {
         memos: Object.keys(state.memos)
         .map(id => {
           if (action.memoIds.includes(id)) {
-            return collectObjects(
+            return collectObject(
               state.memos[id],
               { labelIds: state.memos[id].labelIds.concat([action.id]) }
             )
@@ -138,7 +138,7 @@ const reducers = (state = initialState, action) => {
         memos: Object.keys(state.memos)
         .map(id => {
           if (action.memoIds.includes(id)) {
-            return collectObjects(
+            return collectObject(
               state.memos[id],
               { labelIds: state.memos[id].labelIds.filter(id => id != action.id)}
             )
