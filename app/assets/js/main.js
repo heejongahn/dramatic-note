@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
-import { App, MemoContainer, MemoPanel } from './containers';
+import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers';
 import reducers from './reducers'
 import { populate } from './actions'
 
@@ -33,6 +33,7 @@ ReactDom.render(
         <Route path=":labelId" component={MemoContainer}>
           <IndexRoute component={MemoPanel} />
           <Route path=":memoId" component={MemoPanel} />
+          <Route path=":memoId/edit" component={EditMemoPanel} />
         </Route>
       </Route>
     </Router>
