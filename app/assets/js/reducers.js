@@ -52,12 +52,12 @@ const reducers = (state = initialState, action) => {
           .map(id => ({ [id]: state.labels[id]}))
           ),
 
-        memos: Object.keys(state.memos)
-          .map(id => collectObject(
+        memos: Object.assign({}, ...Object.keys(state.memos)
+          .map(id => ({ [id]: collectObject(
             state.memos[i],
             { labelids: state.memos[i].labelIds.filter(id => id != action.id) }
-          )
-        )
+          )})
+        ))
       }
 
     case CREATE_MEMO:
@@ -89,12 +89,12 @@ const reducers = (state = initialState, action) => {
           .map(id => ({ [id]: state.memos[id] }))
         ),
 
-        labels: Object.keys(state.labels)
-          .map(id => collectObject(
+        labels: Object.assign({}, ...Object.keys(state.labels)
+          .map(id => ({ [id]: collectObject(
             state.labels[id],
             { memoIds: state.labels[id].memoIds.filter(id => id != action.id) }
-          )
-        )
+          )})
+        ))
       }
 
     case TOGGLE_SELECT_MEMO:
