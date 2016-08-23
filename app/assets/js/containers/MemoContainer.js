@@ -4,10 +4,10 @@ import MemoItem from '../components/MemoItem'
 
 const MemoContainer = ({ children, params, memos }) => {
   const labelId = params.labelId
-  const visibleMemos = Object.keys(memos)
+  const visibleMemoIds = Object.keys(memos)
     .filter(id => labelId == "all" || memos[id].labelIds.includes(labelId))
 
-  const MemoPanel = Object.keys(visibleMemos).includes(params.memoId)
+  const MemoPanel = visibleMemoIds.includes(params.memoId)
     ? React.cloneElement(children, { memo: memos[params.memoId] })
     : children
 
@@ -15,7 +15,7 @@ const MemoContainer = ({ children, params, memos }) => {
     <div id="memo-tab" className="col-md-8">
       <div id="memo-list" className="col-md-6">
         <ul className="list-group">
-          {visibleMemos
+          {visibleMemoIds
             .map(id =>
               <MemoItem key={id} memo={memos[id]} to={`/${labelId}/${id}`} />
             )}
