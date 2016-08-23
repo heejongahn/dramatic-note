@@ -100,12 +100,12 @@ export const toggleSelectMemo = ({ id }) => (
 /* Async action creators */
 export const createMemo = (title, body) => {
   return (dispatch) => {
-    modifiedAt = Date.now()
+    const modifiedAt = Date.now()
     apiCallAndDispatch(
       '/memo',
       'POST',
       JSON.stringify({ title, body, modifiedAt }),
-      localCreatememo,
+      localCreateMemo,
       dispatch
     )
   }
@@ -113,12 +113,12 @@ export const createMemo = (title, body) => {
 
 export const updateMemo = (id, title, body) => {
   return (dispatch) => {
-    modifiedAt = Date.now()
+    const modifiedAt = Date.now()
     apiCallAndDispatch(
       `/memo/${id}`,
       'PUT',
       JSON.stringify({ title, body, modifiedAt }),
-      localUpdatememo,
+      localUpdateMemo,
       dispatch
     )
   }
@@ -130,7 +130,7 @@ export const deleteMemo = (id) => {
       `/memo/${id}`,
       'DELETE',
       null,
-      localDeletememo,
+      localDeleteMemo,
       dispatch
     )
   }

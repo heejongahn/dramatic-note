@@ -1,19 +1,38 @@
 import React from 'react'
 
-const MemoPanel = ({ params, memo } ) => {
+import { connect } from 'react-redux'
+import { updateMemo } from '../actions'
+
+
+const MemoPanel = ({ params, memo, dispatch } ) => {
+  const onMemoPanelBlur = () => {
+    const title = document.getElementsByClassName("panel-title")[0].innerHTML
+    const body = document.getElementsByClassName("memo-body")[0].innerHTML
+
+    return dispatch(updateMemo(params.memoId, title, body))
+  }
+
   if (params.memoId && memo) {
     return (
       <div className="panel panel-default memo">
         <div className="panel-heading">
-          <h3 className="panel-title">
+          <h3
+            className="panel-title" contentEditable="true"
+            onBlur={()=>onMemoPanelBlur()}
+          >
             {memo.title}
           </h3>
         </div>
         <div className="panel-body">
-          {memo.body}
-          <p>
+          <div
+            className="memo-body" contentEditable="true"
+            onBlur={()=>onMemoPanelBlur()}
+          >
+            {memo.body}
+          </div>
+          <div className="memo-date">
             {new Date(memo.modifiedAt).toISOString().slice(0, 10)}
-          </p>
+          </div>
         </div>
       </div>
     )
@@ -31,4 +50,4 @@ const MemoPanel = ({ params, memo } ) => {
 }
 
 
-export default MemoPanel
+export default connect()(MemoPanel)
