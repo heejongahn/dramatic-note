@@ -10,7 +10,7 @@ def catch_all(path):
 
 def memo_to_json(memo):
     return { 'title': memo.title, 'body': memo.body,
-            'modifiedAt': memo.modifiedAt,
+            'modifiedAt': memo.modifiedAt, 'checked': False,
             'labelIds': [str(label.id) for label in memo.labels]}
 
 def label_to_json(label):
