@@ -1,33 +1,27 @@
 import React from 'react'
 
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { updateMemo } from '../actions'
 
 
 const MemoPanel = ({ params, memo, dispatch } ) => {
-  const onMemoPanelBlur = () => {
-    const title = document.getElementsByClassName("panel-title")[0].innerHTML
-    const body = document.getElementsByClassName("memo-body")[0].innerHTML
-
-    return dispatch(updateMemo(params.memoId, title, body))
-  }
-
   if (params.memoId && memo) {
     return (
       <div className="panel panel-default memo">
         <div className="panel-heading">
-          <h3
-            className="panel-title" contentEditable="true"
-            onBlur={()=>onMemoPanelBlur()}
-          >
+          <b className="panel-title memo-title">
             {memo.title}
-          </h3>
+          </b>
+          <Link
+            to={`/${params.labelId}/${params.memoId}/edit`}
+            className="btn btn-default btn-sm">
+            수정
+          </Link>
+          <button className="btn btn-default btn-sm">삭제</button>
         </div>
         <div className="panel-body">
-          <div
-            className="memo-body" contentEditable="true"
-            onBlur={()=>onMemoPanelBlur()}
-          >
+          <div className="memo-body">
             {memo.body}
           </div>
           <div className="memo-date">
