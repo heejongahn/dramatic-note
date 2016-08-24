@@ -68,7 +68,7 @@ def create_memo():
     db.session.add(memo)
     db.session.commit()
 
-    result = {'id': label.id, 'memo': memo_to_json(memo)}
+    result = {'id': memo.id, 'memo': memo_to_json(memo)}
 
     return jsonify(result=result)
 
