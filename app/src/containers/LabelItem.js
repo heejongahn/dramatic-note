@@ -1,5 +1,3 @@
-// TODO: LabelList 에서 받은 selectedLabelId 보고 active 처리해주기
-
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
