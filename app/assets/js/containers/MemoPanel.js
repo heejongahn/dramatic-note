@@ -12,7 +12,7 @@ const MemoPanel = ({ params, memo, dispatch } ) => {
 
   if (params.memoId && memo) {
     return (
-      <div className="panel panel-default memo">
+      <div className="panel panel-default memo memo-panel">
         <div className="panel-heading">
           <div className="panel-title">
             <span className="memo-title">{memo.title}</span>
@@ -39,7 +39,7 @@ const MemoPanel = ({ params, memo, dispatch } ) => {
     )
   } else {
     return (
-      <div className="panel panel-default memo">
+      <div className="panel panel-default memo memo-panel">
         <div className="panel-heading">
           <h3 className="panel-title">선택된 메모가 없습니다.</h3>
         </div>

@@ -1,7 +1,23 @@
-body * {
+/* Sitewise attributes */
+
+div#label-container, div#memo-list, div#memo {
   max-height: calc(100vh - 4em);
   overflow-y: scroll;
 }
+
+html a {
+  color: black;
+
+  & :link, :visited, :hover, :active {
+    text-decoration: none;
+  }
+}
+
+div.container {
+  margin: 2em auto;
+}
+
+/* LabelItem */
 
 li.label-item {
   position: relative;
@@ -19,18 +35,41 @@ li.label-item.selected {
   }
 }
 
-input.memo-title {
+/* MemoPanels */
+
+input.memo-title, input.new-memo-title {
   width: 100%;
   background: 0;
   border: 0;
 }
 
-textarea.memo-body {
+textarea.memo-body, textarea.new-memo-body {
   resize: none;
   width: 100%;
   border: 0;
   margin: 0;
   padding: 0;
+}
+
+div.memo-panel {
+  div.panel-heading {
+    background-color: #414a4c;
+    color: white;
+    font-weight: bold;
+
+    a, button {
+      color: #333;
+    }
+  }
+
+  div.panel-footer {
+    padding: 0;
+  }
+
+  a.btn-block {
+    border: 0;
+    padding: 10px;
+  }
 }
 
 div.memo-body {
@@ -57,16 +96,4 @@ p.memo-item-preview {
 
 span.memo-item-date, span.memo-date {
   font-size: 0.8em;
-}
-
-html a {
-  color: black;
-
-  & :link, :visited, :hover, :active {
-    text-decoration: none;
-  }
-}
-
-div.container {
-  margin: 2em auto;
 }

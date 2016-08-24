@@ -22,6 +22,7 @@ const MemoItem = ({ memo, id, labelId, dispatch }) => {
             <b className="memo-item-title">{memo.title}</b>
             <p className="memo-item-preview">{memo.body}</p>
           </Link>
+          <span className="memo-item-date">마지막 수정 날짜: {new Date(memo.modifiedAt).toISOString().slice(0, 10)}</span>
         </div>
         <div className="col-md-2">
           <button className="btn btn-default btn-xs memo-delete"
@@ -30,7 +31,6 @@ const MemoItem = ({ memo, id, labelId, dispatch }) => {
           </button>
         </div>
       </div>
-      <span className="memo-item-date">마지막 수정 날짜: {new Date(memo.modifiedAt).toISOString().slice(0, 10)}</span>
     </li>
   )
 }

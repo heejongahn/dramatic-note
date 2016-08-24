@@ -17,7 +17,7 @@ const MemoContainer = ({ children, params, memos }) => {
     : children
 
   return (
-    <div id="memo-tab" className="col-md-8">
+    <div id="memo-container" className="col-md-8">
       <div id="memo-list" className="col-md-6">
         { VisibleMemoList }
       </div>

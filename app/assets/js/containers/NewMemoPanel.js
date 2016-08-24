@@ -14,8 +14,8 @@ const NewMemoPanel = ({ dispatch } ) => {
   }
 
   return (
-    <div className="col-md-8 col-md-offset-2">
-      <div className="panel panel-default new-memo">
+    <div className="col-md-6 col-md-offset-3">
+      <div className="panel panel-default new-memo memo-panel">
         <div className="panel-heading">
           <div className="panel-title">
             <input type="text" className="new-memo-title"/>
@@ -26,11 +26,11 @@ const NewMemoPanel = ({ dispatch } ) => {
           </textarea>
         </div>
         <div className="panel-footer">
-          <button
+          <a
             className="btn btn-default btn-small btn-block"
             onClick={()=>onCreateMemo()}>
             메모 생성
-          </button>
+          </a>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ const EditMemoPanel = ({ params, memo, dispatch } ) => {
 
   if (memo) {
     return (
-      <div className="panel panel-default memo">
+      <div className="panel panel-default edit-memo memo-panel">
         <div className="panel-heading">
           <div className="panel-title">
             <input type="text" defaultValue={memo.title} className="memo-title"/>
@@ -39,7 +39,7 @@ const EditMemoPanel = ({ params, memo, dispatch } ) => {
     )
   } else {
     return (
-      <div className="panel panel-default memo">
+      <div className="panel panel-default memo-panel">
         <div className="panel-heading">
           <div className="panel-title">
             선택된 메모가 없습니다.
