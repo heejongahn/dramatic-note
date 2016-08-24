@@ -15,14 +15,13 @@ const collectObject = (first, second) => {
 }
 
 const reducers = (state = initialState, action) => {
-  let memos, labels, newLabels, newMemos, newMemoIds, memo, label
-
   switch (action.type) {
     case POPULATE:
-      memos = action.memos
-      labels = action.labels
-
-      return ({ memos, labels })
+      return {
+        memos: action.memos,
+        labels: action.labels,
+        checkedMemoIds: []
+      }
 
     case CREATE_LABEL:
       return collectObject(
@@ -47,19 +46,22 @@ const reducers = (state = initialState, action) => {
       )
 
     case DELETE_LABEL:
-      return {
-        labels: Object.assign({}, ...Object.keys(state.labels)
-          .filter(id => id != action.id)
-          .map(id => ({ [id]: state.labels[id]}))
-          ),
+      return collectObject(
+        state,
+        {
+          labels: Object.assign({}, ...Object.keys(state.labels)
+            .filter(id => id != action.id)
+            .map(id => ({ [id]: state.labels[id]}))
+            ),
 
-        memos: Object.assign({}, ...Object.keys(state.memos)
-          .map(id => ({ [id]: collectObject(
-            state.memos[i],
-            { labelids: state.memos[i].labelIds.filter(id => id != action.id) }
-          )})
-        ))
-      }
+          memos: Object.assign({}, ...Object.keys(state.memos)
+            .map(id => ({ [id]: collectObject(
+              state.memos[i],
+              { labelids: state.memos[i].labelIds.filter(id => id != action.id) }
+            )})
+          ))
+        }
+      )
 
     case CREATE_MEMO:
       return collectObject(
@@ -84,98 +86,86 @@ const reducers = (state = initialState, action) => {
       )
 
     case DELETE_MEMO:
-      return {
-        memos: Object.assign({}, ...Object.keys(state.memos)
-          .filter(id => id != action.id)
-          .map(id => ({ [id]: state.memos[id] }))
-        ),
+      return collectObject(
+          {
+          memos: Object.assign({}, ...Object.keys(state.memos)
+            .filter(id => id != action.id)
+            .map(id => ({ [id]: state.memos[id] }))
+          ),
 
-        labels: Object.assign({}, ...Object.keys(state.labels)
-          .map(id => ({ [id]: collectObject(
-            state.labels[id],
-            { memoIds: state.labels[id].memoIds.filter(id => id != action.id) }
-          )})
-        ))
-      }
+          labels: Object.assign({}, ...Object.keys(state.labels)
+            .map(id => ({ [id]: collectObject(
+              state.labels[id],
+              { memoIds: state.labels[id].memoIds.filter(id => id != action.id) }
+            )})
+          ))
+        }
+      )
 
     case TOGGLE_SELECT_MEMO:
       return collectObject(
         state,
         {
-          memos: collectObject(
-            state.memos,
-            {
-              [action.id]: collectObject(
-                state.memos[action.id],
-                { checked: !(state.memos[action.id].checked) }
-              )
-            })
+          checkedMemoIds: (state.checkedMemoIds.includes(action.id)
+          ? state.checkedMemoIds.filter(id => id != action.id)
+          : state.checkedMemoIds.concat([action.id]))
         }
       )
 
     case SELECT_MEMOS:
       return collectObject(
         state,
-        {
-          memos: Object.assign({},
-              state.memos,
-              ...action.ids.map(id =>
-                ({ [id]: collectObject(state.memos[id], { checked: true }) })
-              )
-            )
-        }
+        { checkedMemoIds: action.ids }
       )
 
     case UNSELECT_MEMOS:
       return collectObject(
         state,
-        {
-          memos: Object.assign({},
-              state.memos,
-              ...action.ids.map(id =>
-                ({ [id]: collectObject(state.memos[id], { checked: false }) })
-              )
-            )
-        }
+        { checkedMemoIds: [] }
       )
 
     case ADD_LABEL_TO_MEMOS:
-      return {
-        labels: collectObject(
-          state.labels,
-          { [action.id]: action }),
+      return collectObject(
+        state,
+        {
+          labels: collectObject(
+            state.labels,
+            { [action.id]: action }),
 
-        memos: Object.keys(state.memos)
-        .map(id => {
-          if (action.memoIds.includes(id)) {
-            return collectObject(
-              state.memos[id],
-              { labelIds: state.memos[id].labelIds.concat([action.id]) }
-            )
-          } else {
-            return state.memos[id]
-          }
-        })
-      }
+          memos: Object.keys(state.memos)
+          .map(id => {
+            if (action.memoIds.includes(id)) {
+              return collectObject(
+                state.memos[id],
+                { labelIds: state.memos[id].labelIds.concat([action.id]) }
+              )
+            } else {
+              return state.memos[id]
+            }
+          })
+        }
+      )
 
     case REMOVE_LABEL_FROM_MEMOS:
-      return {
-        labels: collectObject(
-          state.labels,
-          { [action.id]: action }),
+      return collectObject(
+        state,
+        {
+          labels: collectObject(
+            state.labels,
+            { [action.id]: action }),
 
-        memos: Object.keys(state.memos)
-        .map(id => {
-          if (action.memoIds.includes(id)) {
-            return collectObject(
-              state.memos[id],
-              { labelIds: state.memos[id].labelIds.filter(id => id != action.id)}
-            )
-          } else {
-            return state.memos[id]
-          }
+          memos: Object.keys(state.memos)
+          .map(id => {
+            if (action.memoIds.includes(id)) {
+              return collectObject(
+                state.memos[id],
+                { labelIds: state.memos[id].labelIds.filter(id => id != action.id)}
+              )
+            } else {
+              return state.memos[id]
+            }
+          })
         })
-      }
 
     default:
       return state

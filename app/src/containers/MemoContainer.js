@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import MemoHandler from './MemoHandler'
 import { EmptyMemoList, MemoItem } from '../components'
 
-const MemoContainer = ({ children, params, memos }) => {
+const MemoContainer = ({ children, params, memos, checkedMemoIds }) => {
   const labelId = params.labelId
 
   const visibleMemoIds = Object.keys(memos)
@@ -14,7 +14,13 @@ const MemoContainer = ({ children, params, memos }) => {
   const VisibleMemoList = visibleMemoIds.length == 0
     ? <EmptyMemoList />
     : visibleMemoIds
-      .map(id => <MemoItem key={id} memo={memos[id]} id={id} labelId={labelId} />)
+    .map(id => <MemoItem
+      key={id}
+      memo={memos[id]}
+      id={id}
+      labelId={labelId}
+      checked={checkedMemoIds.includes(id)}
+        />)
 
   const MemoPanel = visibleMemoIds.includes(params.memoId)
     ? React.cloneElement(children, { memo: memos[params.memoId] })
@@ -38,4 +44,11 @@ const MemoContainer = ({ children, params, memos }) => {
   )
 }
 
-export default connect()(MemoContainer)
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({},
+    { checkedMemoIds: state.checkedMemoIds },
+    ownProps
+  )
+}
+
+export default connect(mapStateToProps)(MemoContainer)

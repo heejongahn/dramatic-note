@@ -5,15 +5,15 @@ import { connect } from 'react-redux'
 
 import { deleteMemo, toggleSelectMemo } from '../actions'
 
-const MemoItem = ({ memo, id, labelId, dispatch }) => {
+const MemoItem = ({ memo, id, labelId, checked, dispatch }) => {
   return (
     <li className="list-group-item">
       <div className="memo-item row">
         <div className="col-md-1">
           <input
             type="checkbox"
-            checked={memo.checked}
-            onClick={(e)=>dispatch(toggleSelectMemo({ id }))}
+            checked={checked}
+            onChange={(e)=>dispatch(toggleSelectMemo({ id }))}
           />
         </div>
         <div className="col-md-8">

@@ -15,7 +15,7 @@
       "name"    : "STRING - Label name",
       "memoIds" : "[STRING] - A list of memos' Ids related with the label"
     }
-  }
+  },
 
   /*
    * memos: An object storing all memos
@@ -24,15 +24,15 @@
     "1": {
       "title"       : "STRING - Memo title",
       "body"        : "STRING - Memo body",
-      "checked"     : "BOOLEAN - Flag indicating if the memo is checked or not",
       "modifiedAt"  : "NUMBER - Last modified time in unix time",
       "labelIds"    : "[STRING] - A list of labels' Ids related with the memo"
     }
-  }
+  },
+
+  checkedMemoIds: ["1", "2", "3", ...]
 
   /* States below can be calculated using states above
    *
    * labelId + memos -> visibleMemos
-   * memos -> selectedMemos
    */
 }
