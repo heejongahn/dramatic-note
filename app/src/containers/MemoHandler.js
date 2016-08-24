@@ -2,14 +2,14 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { selectAllMemos, unselectAllMemos } from '../actions'
+import { selectMemos, unselectMemos } from '../actions'
 
-const MemoHandler = ({ checkedMemoIds, dispatch }) => {
+const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
   const onAllMemosToggle = (e) => {
     if (e.target.checked) {
-      dispatch(selectAllMemos())
+      dispatch(selectMemos(memoIds))
     } else {
-      dispatch(unselectAllMemos())
+      dispatch(unselectMemos(memoIds))
     }
   }
 

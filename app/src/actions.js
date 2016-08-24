@@ -97,8 +97,8 @@ export const UPDATE_MEMO = 'UPDATE_MEMO'
 export const DELETE_MEMO = 'DELETE_MEMO'
 export const TOGGLE_SELECT_MEMO = 'TOGGLE_SELECT_MEMO'
 export const TOGGLE_SELECT_ALL = 'TOGGLE_SELECT_ALL'
-export const SELECT_ALL_MEMOS = 'SELECT_ALL_MEMOS'
-export const UNSELECT_ALL_MEMOS = 'UNSELECT_ALL_MEMOS'
+export const SELECT_MEMOS = 'SELECT_MEMOS'
+export const UNSELECT_MEMOS = 'UNSELECT_MEMOS'
 
 export const localCreateMemo = ({ id, memo }) => (
   { type: CREATE_MEMO, id, memo })
@@ -113,12 +113,12 @@ export const localDeleteMemo = ({ id }) => (
 export const toggleSelectMemo = ({ id }) => (
   { type: TOGGLE_SELECT_MEMO, id })
 
-export const selectAllMemos = () => (
-  { type: SELECT_ALL_MEMOS }
+export const selectMemos = (ids) => (
+  { type: SELECT_MEMOS, ids }
 )
 
-export const unselectAllMemos = () => (
-  { type: UNSELECT_ALL_MEMOS }
+export const unselectMemos = (ids) => (
+  { type: UNSELECT_MEMOS, ids }
 )
 
 /* Async action creators */
