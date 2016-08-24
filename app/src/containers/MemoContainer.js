@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
+
+import MemoHandler from './MemoHandler'
 import { EmptyMemoList, MemoItem } from '../components'
 
 const MemoContainer = ({ children, params, memos }) => {
@@ -18,8 +21,13 @@ const MemoContainer = ({ children, params, memos }) => {
 
   return (
     <div id="memo-container" className="col-md-8">
-      <div id="memo-list" className="col-md-6">
-        { VisibleMemoList }
+      <div className="col-md-6">
+        <MemoHandler />
+        <div id="memo-list">
+          <ul className="list-group">
+            { VisibleMemoList }
+          </ul>
+        </div>
       </div>
       <div id="memo" className="col-md-6">
         { MemoPanel }
@@ -28,4 +36,4 @@ const MemoContainer = ({ children, params, memos }) => {
   )
 }
 
-export default MemoContainer
+export default connect()(MemoContainer)
