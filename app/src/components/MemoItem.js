@@ -12,8 +12,8 @@ const MemoItem = ({ memo, id, labelId, dispatch }) => {
         <div className="col-md-1">
           <input
             type="checkbox"
-            value={memo.checked}
-            onChange={()=>dispatch(toggleSelectMemo({ id }))}
+            checked={memo.checked}
+            onClick={(e)=>dispatch(toggleSelectMemo({ id }))}
           />
         </div>
         <div className="col-md-8">
