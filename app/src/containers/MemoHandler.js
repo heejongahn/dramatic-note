@@ -17,7 +17,7 @@ const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
     <div>
       <button className="btn btn-default">
         <input type="checkbox"
-          checked={checkedMemoIds.length != 0}
+          checked={checkedMemoIds.length == memoIds.length}
           onChange={(e)=>onAllMemosToggle(e)}/>
       </button>
       <button className="btn btn-default"
