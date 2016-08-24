@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-import { updateLabel } from '../actions'
+import { updateLabel, unselectAllMemos } from '../actions'
 
 const toggleEditable = (id) => {
   const labelNameSpan = document.getElementById(`label-name-${id}`)
@@ -51,7 +51,7 @@ const LabelItem = ({ id, label, selected, dispatch }) => {
 
   return (
     <li className={labelItemClass}>
-      <Link to={`/${id}`}>
+      <Link to={`/${id}`} onClick={()=>dispatch(unselectAllMemos())}>
         <span
           id={`label-name-${id}`}
           className="label-name"

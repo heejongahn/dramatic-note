@@ -2,21 +2,23 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { selectMemos, unselectMemos } from '../actions'
+import { selectMemos, unselectAllMemos } from '../actions'
 
 const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
   const onAllMemosToggle = (e) => {
     if (e.target.checked) {
       dispatch(selectMemos(memoIds))
     } else {
-      dispatch(unselectMemos(memoIds))
+      dispatch(unselectAllMemos())
     }
   }
 
   return (
     <div className="input-group">
       <span className="input-group-addon">
-        <input type="checkbox" onClick={(e)=>onAllMemosToggle(e)}/>
+        <input type="checkbox"
+          checked={checkedMemoIds.length != 0}
+          onChange={(e)=>onAllMemosToggle(e)}/>
       </span>
       <p>하하하</p>
     </div>
@@ -25,7 +27,7 @@ const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
 
 const mapStateToProps = (state, ownProps) => (
   Object.assign({},
-    { checkedMemoIds: Object.keys(state.memos).filter(id => state.memos[id].checked) },
+    { checkedMemoIds: state.checkedMemoIds },
     ownProps)
 )
 

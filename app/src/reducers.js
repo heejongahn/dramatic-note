@@ -1,13 +1,14 @@
 import { POPULATE, CREATE_LABEL, UPDATE_LABEL, DELETE_LABEL,
   CREATE_MEMO, UPDATE_MEMO, DELETE_MEMO,
-  TOGGLE_SELECT_MEMO, SELECT_MEMOS, UNSELECT_MEMOS,
+  TOGGLE_SELECT_MEMO, SELECT_MEMOS, UNSELECT_ALL_MEMOS,
   ADD_LABEL_TO_MEMOS, REMOVE_LABEL_FROM_MEMOS } from './actions'
 
 import 'whatwg-fetch'
 
 const initialState = {
   labels: {},
-  memos: {}
+  memos: {},
+  checkedMemoIds: []
 }
 
 const collectObject = (first, second) => {
@@ -118,7 +119,7 @@ const reducers = (state = initialState, action) => {
         { checkedMemoIds: action.ids }
       )
 
-    case UNSELECT_MEMOS:
+    case UNSELECT_ALL_MEMOS:
       return collectObject(
         state,
         { checkedMemoIds: [] }
