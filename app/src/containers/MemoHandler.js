@@ -15,13 +15,15 @@ const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
 
   return (
     <div>
-      <button className="btn btn-default">
+      <span className="btn btn-default">
         <input type="checkbox"
-          checked={checkedMemoIds.length == memoIds.length}
-          onChange={(e)=>onAllMemosToggle(e)}/>
-      </button>
+          checked={memoIds.length > 0 &&checkedMemoIds.length == memoIds.length}
+          onChange={(e)=>onAllMemosToggle(e)}
+          disabled={memoIds.length == 0}/>
+      </span>
       <button className="btn btn-default"
-        onClick={(e)=>dispatch(deleteMemos(checkedMemoIds))}>
+        onClick={(e)=>dispatch(deleteMemos(checkedMemoIds))}
+        disabled={checkedMemoIds.length == 0}>
         삭제
       </button>
     </div>
