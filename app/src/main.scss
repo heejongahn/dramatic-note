@@ -1,6 +1,6 @@
 /* Sitewise attributes */
 
-div#label-container, div#memo-list, div#memo {
+ul#label-list, div#memo-list, div#memo {
   max-height: calc(100vh - 4em);
   overflow-y: scroll;
 }
@@ -18,6 +18,10 @@ div.container {
 }
 
 /* LabelItem */
+
+ul#label-list {
+  margin-bottom: 0;
+}
 
 li.label-item {
   position: relative;

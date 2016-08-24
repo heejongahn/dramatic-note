@@ -24,7 +24,7 @@ const AddLabelItem = ({ labelNames, dispatch }) => {
   }
 
   return (
-    <li className="list-group-item">
+    <li id="add-label-item" className="list-group-item">
       <form className="form-inline row">
         <div id="new-label-form-group" className="form-group col-md-9">
           <input type="text" className="form-control" id="new-label-name" placeholder="새 라벨 이름"/>
