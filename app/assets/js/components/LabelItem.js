@@ -28,7 +28,7 @@ const preventLineBreak = (e) => {
   return true
 }
 
-const LabelItem = ({ id, label, dispatch }) => {
+const LabelItem = ({ id, label, selected, dispatch }) => {
   const onUpdateLabel = () => {
     const labelNameSpan = document.getElementById(`label-name-${id}`)
     const newLabelName = labelNameSpan.innerHTML
@@ -47,8 +47,12 @@ const LabelItem = ({ id, label, dispatch }) => {
           수정
         </button>
 
+  const labelItemClass = selected
+    ? "list-group-item selected"
+    : "list-group-item"
+
   return (
-    <li className="list-group-item">
+    <li className={labelItemClass}>
       <Link to={`/${id}`}>
         <span
           id={`label-name-${id}`}
