@@ -21,7 +21,7 @@ const NewMemoPanel = ({ dispatch } ) => {
           </div>
         </div>
         <div className="panel-body">
-          <textarea className="new-memo-body" placeholder="내용">
+          <textarea className="new-memo-body" placeholder="내용" rows="7">
           </textarea>
         </div>
         <div className="panel-footer">

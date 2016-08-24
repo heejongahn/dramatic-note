@@ -21,6 +21,7 @@ div.container {
 
 li.label-item {
   position: relative;
+  color: #414a4c;
 
   button {
     position: absolute;
@@ -33,6 +34,11 @@ li.label-item.selected {
   a {
     color: white;
   }
+}
+
+input#new-label-name {
+  border: 0;
+  width: 100%;
 }
 
 /* MemoPanels */

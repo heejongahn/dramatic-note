@@ -14,17 +14,17 @@ const AddLabelItem = ({ dispatch }) => {
 
   return (
     <li className="list-group-item">
-      <form className="form-inline">
-        <div className="form-group">
+      <form className="form-inline row">
+        <div className="form-group col-md-9">
           <input type="text" className="form-control" id="new-label-name" placeholder="새 라벨 이름"/>
         </div>
         <button type="submit"
-          className="btn btn-default"
+          className="btn btn-default col-md-2"
           onClick={e => {
             e.preventDefault()
             onCreateLabel()}
           }>
-            새 라벨 생성
+            생성
           </button>
       </form>
     </li>
