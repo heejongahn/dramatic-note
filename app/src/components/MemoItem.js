@@ -34,4 +34,11 @@ const MemoItem = ({ memo, id, labelId, checked, dispatch }) => {
   )
 }
 
-export default connect()(MemoItem)
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({},
+    { checked: state.checkedMemoIds.includes(ownProps.id) },
+    ownProps
+  )
+}
+
+export default connect(mapStateToProps)(MemoItem)

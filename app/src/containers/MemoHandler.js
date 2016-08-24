@@ -14,13 +14,12 @@ const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
   }
 
   return (
-    <div className="input-group">
-      <span className="input-group-addon">
+    <div>
+      <button className="btn btn-default">
         <input type="checkbox"
           checked={checkedMemoIds.length != 0}
           onChange={(e)=>onAllMemosToggle(e)}/>
-      </span>
-      <p>하하하</p>
+      </button>
     </div>
   )
 }
