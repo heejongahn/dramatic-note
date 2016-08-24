@@ -1,5 +1,6 @@
 import { POPULATE, CREATE_LABEL, UPDATE_LABEL, DELETE_LABEL,
-  CREATE_MEMO, UPDATE_MEMO, DELETE_MEMO, TOGGLE_SELECT_MEMO,
+  CREATE_MEMO, UPDATE_MEMO, DELETE_MEMO,
+  TOGGLE_SELECT_MEMO, SELECT_ALL_MEMOS, UNSELECT_ALL_MEMOS,
   ADD_LABEL_TO_MEMOS, REMOVE_LABEL_FROM_MEMOS } from './actions'
 
 import 'whatwg-fetch'
@@ -109,6 +110,30 @@ const reducers = (state = initialState, action) => {
                 { checked: !(state.memos[action.id].selected) }
               )
             })
+        }
+      )
+
+    case SELECT_ALL_MEMOS:
+      return collectObject(
+        state,
+        {
+          memos: Object.assign({},
+            ...Object.keys(state.memos).map(id =>
+              ({ [id]: collectObject(state.memos[id], { checked: true }) })
+            )
+          )
+        }
+      )
+
+    case UNSELECT_ALL_MEMOS:
+      return collectObject(
+        state,
+        {
+          memos: Object.assign({},
+            ...Object.keys(state.memos).map(id =>
+              ({ [id]: collectObject(state.memos[id], { checked: false }) })
+            )
+          )
         }
       )
 
