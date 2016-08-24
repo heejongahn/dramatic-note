@@ -1,8 +1,4 @@
-// TODO: LabelList 에서 받은 id, label 로 프로퍼티 대체
 // TODO: LabelList 에서 받은 selectedLabelId 보고 active 처리해주기
-// TODO: 해당되는 메모 개수 추가
-
-// TODO: 이름 변경은 여기 들어가야 할 것 같다
 
 import React from 'react'
 import { connect } from 'react-redux'
@@ -24,6 +20,14 @@ const toggleEditable = (id) => {
   }
 }
 
+const preventLineBreak = (e) => {
+  if (e.which == 13) {
+    e.target.blur()
+    return false
+  }
+  return true
+}
+
 const LabelItem = ({ id, label, dispatch }) => {
   const onUpdateLabel = () => {
     const labelNameSpan = document.getElementById(`label-name-${id}`)
@@ -32,6 +36,7 @@ const LabelItem = ({ id, label, dispatch }) => {
     dispatch(updateLabel(id, newLabelName))
     toggleEditable(id)
   }
+
 
   const editLabelButton = (id == 'all')
     ? null
@@ -48,6 +53,7 @@ const LabelItem = ({ id, label, dispatch }) => {
         <span
           id={`label-name-${id}`}
           className="label-name"
+          onKeyPress={(e)=>preventLineBreak(e)}
           onBlur={()=>onUpdateLabel()}>
           {label.name}
         </span>
