@@ -15,6 +15,9 @@ const AddLabelItem = ({ labelNames, dispatch }) => {
     if (labelNames.includes(newLabelName)) {
       newLabelHelper.innerHTML = "이미 존재하는 라벨 이름입니다."
       newLabelFormGroup.className = "form-group col-md-9 has-error"
+    } else if (newLabelName == "") {
+      newLabelHelper.innerHTML = "이름이 없는 라벨은 생성할 수 없습니다."
+      newLabelFormGroup.className = "form-group col-md-9 has-error"
     } else {
       newLabelForm.value = ""
       newLabelHelper.innerHTML = ""
