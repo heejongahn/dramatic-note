@@ -13,11 +13,11 @@ const prod = [
 ];
 
 module.exports = {
-  context: `${__dirname}/app/assets/js`,
+  context: `${__dirname}/app/src`,
   entry: './main.js',
   output: {
-    path: `${__dirname}/app/static/build`,
-    publicPath: '/build/',
+    path: `${__dirname}/app/static`,
+    publicPath: '/static/',
     filename: '_bundle.js'
   },
   devServer: {
@@ -27,7 +27,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.png$/, loader: 'file?name=static/[hash].[ext]' },
-      { test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file?name=static/[hash].[ext]' },
+      { test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file?name=fonts/[hash].[ext]' },
       { test: /\.css$/, loader: 'style!css!postcss' },
       { test: /\.scss$/, loader: 'style!css!postcss!sass' },
       {

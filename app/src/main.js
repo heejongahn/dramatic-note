@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ReactDom from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from 'react-router'
 
@@ -10,7 +11,7 @@ import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers';
 import reducers from './reducers'
 import { syncWithDB } from './actions'
 
-import '../css/main.scss'
+import './main.scss'
 import 'bootstrap/dist/css/bootstrap.css';
 
 const store = createStore(
