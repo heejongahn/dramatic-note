@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 
 import { connect } from 'react-redux'
 
-import LabelContainer from './LabelContainer';
-import NewMemoPanel from './NewMemoPanel';
+import LabelContainer from './LabelContainer'
+import NewMemoPanel from './NewMemoPanel'
 
 const App = ({ children, memos, labels, params }) => {
   return (

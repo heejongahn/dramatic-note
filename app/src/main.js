@@ -8,10 +8,10 @@ import thunkMiddleware from 'redux-thunk'
 
 import { syncWithDB } from './actions'
 import reducers from './reducers'
-import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers';
+import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers'
 
 import './main.scss'
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css'
 
 const store = createStore(
   reducers,
@@ -34,4 +34,4 @@ ReactDom.render(
     </Router>
   </Provider>,
   document.getElementById('main')
-);
+)
