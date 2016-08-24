@@ -14,28 +14,42 @@ const EditMemoPanel = ({ params, memo, dispatch } ) => {
     return dispatch(updateMemo(params.memoId, title, body))
   }
 
-  return (
-    <div className="panel panel-default memo">
-      <div className="panel-heading">
-        <div className="panel-title">
-          <input type="text" defaultValue={memo.title} className="memo-title"/>
+  if (memo) {
+    return (
+      <div className="panel panel-default memo">
+        <div className="panel-heading">
+          <div className="panel-title">
+            <input type="text" defaultValue={memo.title} className="memo-title"/>
+          </div>
+        </div>
+        <div className="panel-body">
+          <textarea className="memo-body">
+            {memo.body}
+          </textarea>
+        </div>
+        <div className="panel-footer">
+          <Link
+            to={`/${params.labelId}/${params.memoId}`}
+            className="btn btn-default btn-small btn-block"
+            onClick={()=>onEditMemo()}>
+            수정 완료
+          </Link>
         </div>
       </div>
-      <div className="panel-body">
-        <textarea className="memo-body">
-          {memo.body}
-        </textarea>
+    )
+  } else {
+    return (
+      <div className="panel panel-default memo">
+        <div className="panel-heading">
+          <div className="panel-title">
+            선택된 메모가 없습니다.
+          </div>
+        </div>
+        <div className="panel-body">
+        </div>
       </div>
-      <div className="panel-footer">
-        <Link
-          to={`/${params.labelId}/${params.memoId}`}
-          className="btn btn-default btn-small btn-block"
-          onClick={()=>onEditMemo()}>
-          수정 완료
-        </Link>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 
