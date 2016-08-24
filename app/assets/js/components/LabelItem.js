@@ -48,8 +48,8 @@ const LabelItem = ({ id, label, selected, dispatch }) => {
         </button>
 
   const labelItemClass = selected
-    ? "list-group-item selected"
-    : "list-group-item"
+    ? "list-group-item label-item selected"
+    : "list-group-item label-item"
 
   return (
     <li className={labelItemClass}>
