@@ -107,7 +107,7 @@ const reducers = (state = initialState, action) => {
             {
               [action.id]: collectObject(
                 state.memos[action.id],
-                { checked: !(state.memos[action.id].selected) }
+                { checked: !(state.memos[action.id].checked) }
               )
             })
         }
