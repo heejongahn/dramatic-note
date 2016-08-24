@@ -95,6 +95,7 @@ export const deleteLabel = (id) => {
 export const CREATE_MEMO = 'CREATE_MEMO'
 export const UPDATE_MEMO = 'UPDATE_MEMO'
 export const DELETE_MEMO = 'DELETE_MEMO'
+export const DELETE_MEMOS = 'DELETE_MEMOS'
 export const TOGGLE_SELECT_MEMO = 'TOGGLE_SELECT_MEMO'
 export const TOGGLE_SELECT_ALL = 'TOGGLE_SELECT_ALL'
 export const SELECT_MEMOS = 'SELECT_MEMOS'
@@ -109,6 +110,9 @@ export const localUpdateMemo = ({ id, memo }) => (
 
 export const localDeleteMemo = ({ id }) => (
   { type: DELETE_MEMO, id })
+
+export const localDeleteMemos = ({ ids }) => (
+  { type: DELETE_MEMOS, ids })
 
 export const toggleSelectMemo = ({ id }) => (
   { type: TOGGLE_SELECT_MEMO, id })
@@ -160,6 +164,17 @@ export const deleteMemo = (id) => {
   }
 }
 
+export const deleteMemos = (ids) => {
+  return (dispatch) => {
+    apiCallAndDispatch(
+      `/memos`,
+      'DELETE',
+      JSON.stringify({ ids }),
+      localDeleteMemos,
+      dispatch
+    )
+  }
+}
 
 /*
  * Actions on Memos

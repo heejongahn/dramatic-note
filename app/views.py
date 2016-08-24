@@ -96,6 +96,18 @@ def edit_or_delete_memo(id):
 
     return jsonify(result=result)
 
+@app.route('/memos', methods=['DELETE'])
+def delete_memos():
+    ids = request.get_json()['ids']
+    for id in ids:
+        memo = Memo.query.get(id)
+        db.session.delete(memo)
+        db.session.commit()
+
+    result = {'ids': ids}
+
+    return jsonify(result=result)
+
 @app.route('/label/<labelId>/memos', methods=['POST', 'DELETE'])
 def add_or_remove_label(labelId):
     payload = request.get_json()

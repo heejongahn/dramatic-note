@@ -1,5 +1,5 @@
 import { POPULATE, CREATE_LABEL, UPDATE_LABEL, DELETE_LABEL,
-  CREATE_MEMO, UPDATE_MEMO, DELETE_MEMO,
+  CREATE_MEMO, UPDATE_MEMO, DELETE_MEMO, DELETE_MEMOS,
   TOGGLE_SELECT_MEMO, SELECT_MEMOS, UNSELECT_ALL_MEMOS,
   ADD_LABEL_TO_MEMOS, REMOVE_LABEL_FROM_MEMOS } from './actions'
 
@@ -88,6 +88,8 @@ const reducers = (state = initialState, action) => {
 
     case DELETE_MEMO:
       return collectObject(
+        state,
+        collectObject(
           {
           memos: Object.assign({}, ...Object.keys(state.memos)
             .filter(id => id != action.id)
@@ -97,10 +99,38 @@ const reducers = (state = initialState, action) => {
           labels: Object.assign({}, ...Object.keys(state.labels)
             .map(id => ({ [id]: collectObject(
               state.labels[id],
-              { memoIds: state.labels[id].memoIds.filter(id => id != action.id) }
+              {
+                memoIds:
+                  state.labels[id].memoIds
+                  .filter(id => id != action.id) }
             )})
           ))
         }
+        )
+      )
+
+    case DELETE_MEMOS:
+      return collectObject(
+        state,
+        collectObject(
+          {
+          memos: Object.assign({}, ...Object.keys(state.memos)
+            .filter(id => !(action.ids.includes(id)))
+            .map(id => ({ [id]: state.memos[id] }))
+          ),
+
+          labels: Object.assign({}, ...Object.keys(state.labels)
+            .map(id => ({ [id]: collectObject(
+              state.labels[id],
+              {
+                memoIds:
+                  state.labels[id].memoIds
+                  .filter(id => !(action.ids.includes(id)))
+              }
+            )})
+          ))
+          }
+        )
       )
 
     case TOGGLE_SELECT_MEMO:

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { selectMemos, unselectAllMemos } from '../actions'
+import { selectMemos, deleteMemos, unselectAllMemos } from '../actions'
 
 const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
   const onAllMemosToggle = (e) => {
@@ -19,6 +19,10 @@ const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
         <input type="checkbox"
           checked={checkedMemoIds.length != 0}
           onChange={(e)=>onAllMemosToggle(e)}/>
+      </button>
+      <button className="btn btn-default"
+        onClick={(e)=>dispatch(deleteMemos(checkedMemoIds))}>
+        삭제
       </button>
     </div>
   )
