@@ -26,12 +26,14 @@ const EditMemoPanel = ({ params, memo, dispatch } ) => {
           {memo.body}
         </textarea>
       </div>
-      <Link
-        to={`/${params.labelId}/${params.memoId}`}
-        className="btn btn-default btn-small"
-        onClick={()=>onEditMemo()}>
-        수정 완료
-      </Link>
+      <div className="panel-footer">
+        <Link
+          to={`/${params.labelId}/${params.memoId}`}
+          className="btn btn-default btn-small btn-block"
+          onClick={()=>onEditMemo()}>
+          수정 완료
+        </Link>
+      </div>
     </div>
   )
 }
