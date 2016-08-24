@@ -1,9 +1,8 @@
-// TODO: Date 포매팅에 타임존 반영
-
 import React from 'react';
-
 import { Link } from 'react-router';
+
 import { connect } from 'react-redux'
+
 import { deleteMemo, toggleSelectMemo } from '../actions'
 
 const MemoItem = ({ memo, id, labelId, dispatch }) => {

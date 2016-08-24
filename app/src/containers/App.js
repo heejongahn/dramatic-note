@@ -1,8 +1,6 @@
-// TODO: LabelList 에서 labelNames 프로퍼티 제거, 더미 라벨 제거
-// TODO: params.labelId 파라미터 LabelList 한테 selectedLabelId로 넘기기
-
 import React from 'react';
 import { Link } from 'react-router'
+
 import { connect } from 'react-redux'
 
 import LabelContainer from './LabelContainer';

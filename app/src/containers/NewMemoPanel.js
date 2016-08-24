@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 import { createMemo } from '../actions'
 
-
 const NewMemoPanel = ({ dispatch } ) => {
   const onCreateMemo = () => {
     const title = document.getElementsByClassName("new-memo-title")[0].value

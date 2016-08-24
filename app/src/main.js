@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ReactDom from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from 'react-router'
 
@@ -7,9 +6,9 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
-import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers';
-import reducers from './reducers'
 import { syncWithDB } from './actions'
+import reducers from './reducers'
+import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers';
 
 import './main.scss'
 import 'bootstrap/dist/css/bootstrap.css';

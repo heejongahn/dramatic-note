@@ -1,8 +1,8 @@
 import React from 'react'
+
 import { connect } from 'react-redux'
 
 import { createLabel } from '../actions'
-
 import AddLabelItem from './AddLabelItem'
 import LabelItem from './LabelItem'
 
