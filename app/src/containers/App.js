@@ -7,15 +7,13 @@ import LabelContainer from './LabelContainer'
 
 const App = ({ children, memos, labels, params }) => {
   return (
-    <div id="app">
-      <section id="containers" className="row">
-        <LabelContainer
-          labels={labels}
-          totalNumMemos={Object.keys(memos).length}
-          selectedLabelId={params.labelId}/>
+    <div id="app" className="row">
+      <LabelContainer
+        labels={labels}
+        totalNumMemos={Object.keys(memos).length}
+        selectedLabelId={params.labelId}/>
 
-        {React.cloneElement(children, { memos })}
-      </section>
+      {React.cloneElement(children, { memos })}
     </div>
   )
 }

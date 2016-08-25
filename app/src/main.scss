@@ -6,28 +6,27 @@ html, body, div#app {
   overflow-y: hidden;
 }
 
-section#new-memo-panel {
-  height: 30%;
-}
-
-section#containers {
-  height: 70%;
-}
-
 div#label-container, div#memo-container {
-  height: 75%;
-}
-
-div#memo-list-column, div#memo {
   height: 100%;
-}
-
-ul#label-list, ul#memo-list, ul#label-dropdown-list {
-  height: 85%;
-  overflow-y: scroll;
+  padding: 2em;
 }
 
 div#memo {
+  height: 100%;
+}
+
+div#memo-list-column {
+  height: 100%;
+}
+
+ul#label-list, ul#memo-list {
+  height: 85%;
+  padding: 1em 0;
+  overflow-y: scroll;
+}
+
+ul#labels-dropdown-list {
+  height: 70vh;
   overflow-y: scroll;
 }
 
@@ -84,7 +83,7 @@ div#memo-handler {
 div#labels-dropdown {
   position: absolute;
   top: 0;
-  z-index: 1;
+  width: 100%;
   display: inline-block;
 }
 
@@ -95,7 +94,7 @@ ul#labels-dropdown-list {
 /* MemoList */
 
 ul#memo-list {
-  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 b.memo-item-title {

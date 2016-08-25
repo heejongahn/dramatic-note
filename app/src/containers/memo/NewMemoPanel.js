@@ -16,21 +16,20 @@ const NewMemoPanel = ({ dispatch } ) => {
     const body = bodyTextarea.value
 
     if (title == "" || body == "") {
-      newMemoFormGroup.className = "col-md-6 col-md-offset-3 form-group has-error"
+      newMemoFormGroup.className = "form-group has-error"
       newMemoHelper.innerHTML = "빈 제목 또는 내용의 메모를 생성할 수 없습니다."
     } else {
       titleInput.value = ""
       bodyTextarea.value = ""
       newMemoHelper.innerHTML = ""
-      newMemoFormGroup.className = "col-md-6 col-md-offset-3 form-group"
+      newMemoFormGroup.className = "form-group"
 
       return dispatch(createMemo(title, body))
     }
   }
 
   return (
-    <div id="new-memo" className="col-md-6 col-md-offset-3 form-group">
-      <span id="new-memo-helper" className="help-block"></span>
+    <div id="new-memo" className="form-group">
       <div className="panel panel-default memo-panel">
         <div className="panel-heading">
           <div className="panel-title">
@@ -49,6 +48,7 @@ const NewMemoPanel = ({ dispatch } ) => {
           </a>
         </div>
       </div>
+      <span id="new-memo-helper" className="help-block"></span>
     </div>
   )
 }
