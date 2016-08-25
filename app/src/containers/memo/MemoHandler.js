@@ -2,15 +2,15 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { selectMemos, deleteMemos, unselectAllMemos,
+import { checkMemos, deleteMemos, uncheckAllMemos,
   addLabelToMemos, removeLabelFromMemos} from '../../actions'
 
 const MemoHandler = ({ memoIds, checkedMemoIds, labels, currentLabelId, dispatch }) => {
   const onAllMemosToggle = (e) => {
     if (e.target.checked) {
-      dispatch(selectMemos(memoIds))
+      dispatch(checkMemos(memoIds))
     } else {
-      dispatch(unselectAllMemos())
+      dispatch(uncheckAllMemos())
     }
   }
 
@@ -20,7 +20,7 @@ const MemoHandler = ({ memoIds, checkedMemoIds, labels, currentLabelId, dispatch
     } else {
       dispatch(removeLabelFromMemos(labelId, checkedMemoIds))
       if (labelId == currentLabelId) {
-        dispatch(unselectAllMemos())
+        dispatch(uncheckAllMemos())
         toggleLabelsDropdown()
       }
     }

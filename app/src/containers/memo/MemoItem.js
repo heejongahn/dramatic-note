@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { connect } from 'react-redux'
 
-import { deleteMemo, toggleSelectMemo } from '../../actions'
+import { deleteMemo, toggleCheckMemo } from '../../actions'
 
 const MemoItem = ({ memo, id, labelId, checked, dispatch }) => {
   return (
@@ -13,7 +13,7 @@ const MemoItem = ({ memo, id, labelId, checked, dispatch }) => {
           <input
             type="checkbox"
             checked={checked}
-            onChange={(e)=>dispatch(toggleSelectMemo({ id }))}
+            onChange={(e)=>dispatch(toggleCheckMemo({ id }))}
           />
         </div>
         <div className="col-md-8">
