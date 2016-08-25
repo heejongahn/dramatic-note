@@ -161,7 +161,7 @@ const reducers = (state = initialState, action) => {
         {
           labels: collectObject(
             state.labels,
-            { [action.id]: action }),
+            { [action.id]: action.label }),
 
           memos: Object.keys(state.memos)
           .map(id => {
@@ -183,7 +183,7 @@ const reducers = (state = initialState, action) => {
         {
           labels: collectObject(
             state.labels,
-            { [action.id]: action }),
+            { [action.id]: action.label }),
 
           memos: Object.keys(state.memos)
           .map(id => {

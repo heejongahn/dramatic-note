@@ -195,7 +195,7 @@ export const addLabelToMemos = (labelId, memoIds) => {
     apiCallAndDispatch(
       `/label/${labelId}/memos`,
       'POST',
-      JSON.stringify(memoIds),
+      JSON.stringify({ memoIds }),
       localAddLabelToMemos,
       dispatch
     )
@@ -207,7 +207,7 @@ export const removeLabelFromMemos = (labelId, memoIds) => {
     apiCallAndDispatch(
       `/label/${labelId}/memos`,
       'DELETE',
-      JSON.stringify(memoIds),
+      JSON.stringify({ memoIds }),
       localRemoveLabelFromMemos,
       dispatch
     )
