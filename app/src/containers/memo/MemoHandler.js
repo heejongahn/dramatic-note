@@ -59,7 +59,8 @@ const MemoHandler = ({ memoIds, checkedMemoIds, labels, currentLabelId, dispatch
         <button id="labels-dropdown-trigger"
           className="btn btn-default"
           type="button"
-          onClick={()=>toggleLabelsDropdown()}>
+          onClick={()=>toggleLabelsDropdown()}
+          disabled={checkedMemoIds.length == 0}>
           라벨 지정
           <span className="caret"></span>
         </button>
