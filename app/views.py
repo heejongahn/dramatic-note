@@ -118,13 +118,11 @@ def add_or_remove_label(labelId):
         for memo in memos:
             if memo not in label.memos:
                 label.memos.append(memo)
-                db.session.add(memo)
 
     else:
         for memo in memos:
             if memo in label.memos:
                 label.memos.remove(memo)
-                db.session.add(memo)
 
     db.session.add(label)
     db.session.commit()
