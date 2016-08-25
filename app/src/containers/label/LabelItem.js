@@ -36,8 +36,8 @@ const LabelItem = ({ id, label, selected, dispatch }) => {
   }
 
 
-  const editLabelButton = (id == 'all')
-    ? null
+  const labelItemButton = (id == 'all')
+    ? <Link to={`/${id}`} className="btn btn-default btn-xs">새 글 작성</Link>
     : <button
         id={`label-update-${id}`}
         className="btn btn-default btn-xs"
@@ -61,7 +61,7 @@ const LabelItem = ({ id, label, selected, dispatch }) => {
         </span>
         <span className="badge">{label.numMemos}</span>
       </Link>
-      { editLabelButton }
+      { labelItemButton }
     </li>
   )
 }

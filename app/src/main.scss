@@ -61,7 +61,7 @@ li.label-item {
     margin-right: 1em;
   }
 
-  button {
+  button.btn, a.btn {
     position: absolute;
     right: 2em;
   }
@@ -71,6 +71,9 @@ li.label-item.selected {
   background-color: #414a4c;
   a {
     color: white;
+  }
+  a.btn {
+    color: black;
   }
 }
 
