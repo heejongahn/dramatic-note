@@ -15,6 +15,11 @@ div#memo {
   height: 100%;
 }
 
+div#memo-body {
+  height: 80vh;
+  overflow-y: scroll;
+}
+
 div#memo-list-column {
   height: 100%;
 }

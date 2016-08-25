@@ -22,7 +22,7 @@ const EditMemoPanel = ({ params, memo, dispatch } ) => {
           </div>
         </div>
         <div className="panel-body">
-          <textarea id="memo-body" rows="15">
+          <textarea id="memo-body" rows="20">
             {memo.body}
           </textarea>
         </div>
