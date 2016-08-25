@@ -9,18 +9,29 @@ const NewMemoPanel = ({ dispatch } ) => {
     const titleInput = document.getElementsByClassName("new-memo-title")[0]
     const bodyTextarea = document.getElementsByClassName("new-memo-body")[0]
 
+    const newMemoFormGroup = document.getElementById("new-memo")
+    const newMemoHelper = document.getElementById("new-memo-helper")
+
     const title = titleInput.value
     const body = bodyTextarea.value
 
-    titleInput.value = ""
-    bodyTextarea.value = ""
+    if (title == "" || body == "") {
+      newMemoFormGroup.className = "col-md-6 col-md-offset-3 form-group has-error"
+      newMemoHelper.innerHTML = "빈 제목 또는 내용의 메모를 생성할 수 없습니다."
+    } else {
+      titleInput.value = ""
+      bodyTextarea.value = ""
+      newMemoHelper.innerHTML = ""
+      newMemoFormGroup.className = "col-md-6 col-md-offset-3 form-group"
 
-    return dispatch(createMemo(title, body))
+      return dispatch(createMemo(title, body))
+    }
   }
 
   return (
-    <div className="col-md-6 col-md-offset-3">
-      <div className="panel panel-default new-memo memo-panel">
+    <div id="new-memo" className="col-md-6 col-md-offset-3 form-group">
+      <span id="new-memo-helper" className="help-block"></span>
+      <div className="panel panel-default memo-panel">
         <div className="panel-heading">
           <div className="panel-title">
             <input type="text" className="new-memo-title" placeholder="제목"/>
