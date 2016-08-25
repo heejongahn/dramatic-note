@@ -1,6 +1,6 @@
 import React from 'react'
 
-import MemoItem from './MemoItem'
+import MemoItem from '../containers/memo/MemoItem'
 import EmptyMemoList from './EmptyMemoList'
 
 const MemoList = ({ labelId, memos }) => {

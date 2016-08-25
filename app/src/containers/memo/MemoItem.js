@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { connect } from 'react-redux'
 
-import { deleteMemo, toggleSelectMemo } from '../actions'
+import { deleteMemo, toggleSelectMemo } from '../../actions'
 
 const MemoItem = ({ memo, id, labelId, checked, dispatch }) => {
   return (
