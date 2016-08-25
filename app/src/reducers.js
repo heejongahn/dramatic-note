@@ -71,6 +71,13 @@ const reducers = (state = initialState, action) => {
           memos: collectObject(
             state.memos,
             { [action.id]: action.memo }
+          ),
+          labels: (action.labelId == "all")
+            ? state.labels
+            : Object.assign({}, state.labels,
+              { [action.labelId] : collectObject(state.labels[action.labelId],
+                { memoIds: state.labels[action.labelId].memoIds.concat([action.id]) })
+              }
           )
         }
       )

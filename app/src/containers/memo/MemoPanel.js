@@ -40,7 +40,7 @@ const MemoPanel = ({ params, memo, dispatch } ) => {
       </div>
     )
   } else {
-    return <NewMemoPanel />
+    return <NewMemoPanel labelId={params.labelId}/>
   }
 }
 

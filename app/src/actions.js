@@ -101,8 +101,8 @@ export const TOGGLE_SELECT_ALL = 'TOGGLE_SELECT_ALL'
 export const SELECT_MEMOS = 'SELECT_MEMOS'
 export const UNSELECT_ALL_MEMOS = 'UNSELECT_ALL_MEMOS'
 
-export const localCreateMemo = ({ id, memo }) => (
-  { type: CREATE_MEMO, id, memo })
+export const localCreateMemo = ({ id, memo, labelId }) => (
+  { type: CREATE_MEMO, id, memo, labelId })
 
 export const localUpdateMemo = ({ id, memo }) => (
   { type: UPDATE_MEMO, id, memo }
@@ -126,13 +126,13 @@ export const unselectAllMemos = () => (
 )
 
 /* Async action creators */
-export const createMemo = (title, body) => {
+export const createMemo = (title, body, labelId) => {
   return (dispatch) => {
     const modifiedAt = Date.now()
     apiCallAndDispatch(
       '/memo',
       'POST',
-      JSON.stringify({ title, body, modifiedAt }),
+      JSON.stringify({ title, body, modifiedAt, labelId }),
       localCreateMemo,
       dispatch
     )

@@ -2,9 +2,9 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { createMemo } from '../../actions'
+import { createMemo, addLabelToMemos } from '../../actions'
 
-const NewMemoPanel = ({ dispatch } ) => {
+const NewMemoPanel = ({ dispatch, labelId } ) => {
   const onCreateMemo = () => {
     const titleInput = document.getElementById("new-memo-title")
     const bodyTextarea = document.getElementById("new-memo-body")
@@ -24,7 +24,7 @@ const NewMemoPanel = ({ dispatch } ) => {
       newMemoHelper.innerHTML = ""
       newMemoFormGroup.className = "form-group"
 
-      return dispatch(createMemo(title, body))
+      dispatch(createMemo(title, body, labelId))
     }
   }
 

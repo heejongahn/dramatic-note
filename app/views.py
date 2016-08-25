@@ -64,11 +64,17 @@ def edit_or_delete_label(id):
 @app.route('/memo', methods=['POST'])
 def create_memo():
     payload = request.get_json()
+
     memo = Memo(payload['title'], payload['body'], payload['modifiedAt'], [])
+    if payload['labelId'] != "all":
+        label = Label.query.get(payload['labelId'])
+        memo.labels.append(label)
+
     db.session.add(memo)
     db.session.commit()
 
-    result = {'id': memo.id, 'memo': memo_to_json(memo)}
+    result = {'id': memo.id, 'memo': memo_to_json(memo), 'labelId':
+            payload['labelId']}
 
     return jsonify(result=result)
 
