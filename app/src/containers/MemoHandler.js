@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { selectMemos, deleteMemos, unselectAllMemos,
   addLabelToMemos, removeLabelFromMemos} from '../actions'
 
-const MemoHandler = ({ checkedMemoIds, labels, memoIds, dispatch }) => {
+const MemoHandler = ({ memoIds, checkedMemoIds, labels, currentLabelId, dispatch }) => {
   const onAllMemosToggle = (e) => {
     if (e.target.checked) {
       dispatch(selectMemos(memoIds))
@@ -19,6 +19,10 @@ const MemoHandler = ({ checkedMemoIds, labels, memoIds, dispatch }) => {
       dispatch(addLabelToMemos(labelId, checkedMemoIds))
     } else {
       dispatch(removeLabelFromMemos(labelId, checkedMemoIds))
+      if (labelId == currentLabelId) {
+        dispatch(unselectAllMemos())
+        toggleLabelsDropdown()
+      }
     }
   }
 
@@ -28,7 +32,7 @@ const MemoHandler = ({ checkedMemoIds, labels, memoIds, dispatch }) => {
     }).includes(true)
   }
 
-  const onLabelsDropdownToggle = () => {
+  const toggleLabelsDropdown = () => {
     const dropdownList = document.getElementById("labels-dropdown-list")
 
     if (dropdownList.style.visibility == "visible") {
@@ -52,7 +56,10 @@ const MemoHandler = ({ checkedMemoIds, labels, memoIds, dispatch }) => {
         삭제
       </button>
       <div id="labels-dropdown" className="dropdown">
-        <button id="labels-dropdown-trigger" className="btn btn-default" type="button" onClick={()=>onLabelsDropdownToggle()}>
+        <button id="labels-dropdown-trigger"
+          className="btn btn-default"
+          type="button"
+          onClick={()=>toggleLabelsDropdown()}>
           라벨 지정
           <span className="caret"></span>
         </button>

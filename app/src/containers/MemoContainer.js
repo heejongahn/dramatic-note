@@ -22,7 +22,7 @@ const MemoContainer = ({ children, params, memos }) => {
   return (
     <div id="memo-container" className="col-md-8">
       <div className="col-md-6">
-        <MemoHandler memoIds={visibleMemoIds}/>
+        <MemoHandler memoIds={visibleMemoIds} currentLabelId={labelId} />
         <div id="memo-list">
           <MemoList memos={visibleMemos} labelId={labelId} />
         </div>
