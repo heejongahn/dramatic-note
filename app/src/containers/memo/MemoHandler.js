@@ -33,11 +33,14 @@ const MemoHandler = ({ memoIds, checkedMemoIds, labels, currentLabelId, dispatch
   }
 
   const toggleLabelsDropdown = () => {
+    const dropdown = document.getElementById("labels-dropdown")
     const dropdownList = document.getElementById("labels-dropdown-list")
 
     if (dropdownList.style.visibility == "visible") {
+      dropdown.style.zIndex = "0"
       dropdownList.style.visibility = "hidden"
     } else {
+      dropdown.style.zIndex = "1"
       dropdownList.style.visibility = "visible"
     }
   }
