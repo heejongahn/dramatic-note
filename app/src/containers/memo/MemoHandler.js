@@ -43,39 +43,45 @@ const MemoHandler = ({ memoIds, checkedMemoIds, labels, currentLabelId, dispatch
   }
 
   return (
-    <div>
-      <span className="btn btn-default">
-        <input type="checkbox"
-          checked={memoIds.length > 0 && checkedMemoIds.length == memoIds.length}
-          onChange={(e)=>onAllMemosToggle(e)}
-          disabled={memoIds.length == 0}/>
-      </span>
-      <button className="btn btn-default"
-        onClick={(e)=>dispatch(deleteMemos(checkedMemoIds))}
-        disabled={checkedMemoIds.length == 0}>
-        삭제
-      </button>
-      <div id="labels-dropdown" className="dropdown">
-        <button id="labels-dropdown-trigger"
-          className="btn btn-default"
-          type="button"
-          onClick={()=>toggleLabelsDropdown()}
+    <div className="btn-group btn-group-justified" role="group">
+      <div className="btn-group" role="group">
+        <span className="btn btn-default">
+          <input type="checkbox"
+            checked={memoIds.length > 0 && checkedMemoIds.length == memoIds.length}
+            onChange={(e)=>onAllMemosToggle(e)}
+            disabled={memoIds.length == 0}/>
+        </span>
+      </div>
+      <div className="btn-group" role="group">
+        <button className="btn btn-default"
+          onClick={(e)=>dispatch(deleteMemos(checkedMemoIds))}
           disabled={checkedMemoIds.length == 0}>
-          라벨 지정
-          <span className="caret"></span>
+          삭제
         </button>
-        <ul id="labels-dropdown-list" className="list-group">
-          {Object.keys(labels).map(labelId => {
-            return (
-              <li className="list-group-item" key={labelId}>
-                <input type="checkbox"
-                  checked={hasMemoWithLabel(checkedMemoIds, labelId)}
-                  onChange={(e)=>onDropdownCheckboxToggle(e, labelId)}/>
-                {labels[labelId].name}
-              </li>
+      </div>
+      <div className="btn-group" role="group">
+        <div id="labels-dropdown" className="dropdown">
+          <button id="labels-dropdown-trigger"
+            className="btn btn-default"
+            type="button"
+            onClick={()=>toggleLabelsDropdown()}
+            disabled={checkedMemoIds.length == 0}>
+            라벨 지정
+            <span className="caret"></span>
+          </button>
+          <ul id="labels-dropdown-list" className="list-group">
+            {Object.keys(labels).map(labelId => {
+              return (
+                <li className="list-group-item" key={labelId}>
+                  <input type="checkbox"
+                    checked={hasMemoWithLabel(checkedMemoIds, labelId)}
+                    onChange={(e)=>onDropdownCheckboxToggle(e, labelId)}/>
+                  {labels[labelId].name}
+                </li>
+              )}
             )}
-          )}
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   )
