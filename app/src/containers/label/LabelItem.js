@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-import { updateLabel, unselectAllMemos } from '../actions'
+import { updateLabel, unselectAllMemos } from '../../actions'
 
 const toggleEditable = (id) => {
   const labelNameSpan = document.getElementById(`label-name-${id}`)

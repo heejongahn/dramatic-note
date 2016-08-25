@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux'
 
-import { createLabel } from '../actions'
+import { createLabel } from '../../actions'
 
 const AddLabelItem = ({ labelNames, dispatch }) => {
   const onCreateLabel = () => {

@@ -3,8 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { createLabel } from '../actions'
-import AddLabelItem from './AddLabelItem'
-import LabelItem from './LabelItem'
+import { AddLabelItem, LabelItem } from './label'
 
 const LabelContainer = ({ labels, totalNumMemos, selectedLabelId }) => {
   const allMemosLabel = { name: "모든 메모", numMemos: totalNumMemos}
