@@ -28,6 +28,16 @@ const MemoHandler = ({ checkedMemoIds, labels, memoIds, dispatch }) => {
     }).includes(true)
   }
 
+  const onLabelsDropdownToggle = () => {
+    const dropdownList = document.getElementById("labels-dropdown-list")
+
+    if (dropdownList.style.visibility == "visible") {
+      dropdownList.style.visibility = "hidden"
+    } else {
+      dropdownList.style.visibility = "visible"
+    }
+  }
+
   return (
     <div>
       <span className="btn btn-default">
@@ -41,15 +51,15 @@ const MemoHandler = ({ checkedMemoIds, labels, memoIds, dispatch }) => {
         disabled={checkedMemoIds.length == 0}>
         삭제
       </button>
-      <div className="dropdown">
-        <button className="btn btn-default dropdown-toggle" type="button" id="labelsDropdown" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+      <div id="labels-dropdown" className="dropdown">
+        <button id="labels-dropdown-trigger" className="btn btn-default" type="button" onClick={()=>onLabelsDropdownToggle()}>
           라벨 지정
           <span className="caret"></span>
         </button>
-        <ul className="dropdown-menu" aria-labelledby="labelsDropdown">
+        <ul id="labels-dropdown-list" className="list-group">
           {Object.keys(labels).map(labelId => {
             return (
-              <li>
+              <li className="list-group-item" key={labelId}>
                 <input type="checkbox"
                   checked={hasMemoWithLabel(checkedMemoIds, labelId)}
                   onChange={(e)=>onDropdownCheckboxToggle(e, labelId)}/>

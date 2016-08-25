@@ -12,7 +12,6 @@ import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers'
 
 import './main.scss'
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.js'
 
 const store = createStore(
   reducers,

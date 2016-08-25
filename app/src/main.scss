@@ -47,6 +47,16 @@ input#new-label-name {
 
 /* MemoPanels */
 
+div#labels-dropdown {
+  position: absolute;
+  z-index: 1;
+  display: inline-block;
+}
+
+ul#labels-dropdown-list {
+  visibility: hidden;
+}
+
 input.memo-title, input.new-memo-title {
   width: 100%;
   background: 0;
