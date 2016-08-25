@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 import { updateMemo, deleteMemo } from '../../actions'
+import NewMemoPanel from './NewMemoPanel'
 
 const MemoPanel = ({ params, memo, dispatch } ) => {
   const onDeleteMemo = (id) => {
@@ -39,15 +40,7 @@ const MemoPanel = ({ params, memo, dispatch } ) => {
       </div>
     )
   } else {
-    return (
-      <div className="panel panel-default memo memo-panel">
-        <div className="panel-heading">
-          <h3 className="panel-title">선택된 메모가 없습니다.</h3>
-        </div>
-        <div className="panel-body">
-        </div>
-      </div>
-    )
+    return <NewMemoPanel />
   }
 }
 

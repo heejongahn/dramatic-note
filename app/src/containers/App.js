@@ -4,14 +4,10 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 import LabelContainer from './LabelContainer'
-import NewMemoPanel from './NewMemoPanel'
 
 const App = ({ children, memos, labels, params }) => {
   return (
     <div id="app">
-      <section id="new-memo-panel" className="row">
-        <NewMemoPanel />
-      </section>
       <section id="containers" className="row">
         <LabelContainer
           labels={labels}
