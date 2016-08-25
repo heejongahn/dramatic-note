@@ -8,8 +8,8 @@ import NewMemoPanel from './NewMemoPanel'
 
 const App = ({ children, memos, labels, params }) => {
   return (
-    <div>
-      <section id="newMemoPanel" className="row">
+    <div id="app">
+      <section id="new-memo-panel" className="row">
         <NewMemoPanel />
       </section>
       <section id="containers" className="row">

@@ -7,7 +7,7 @@ const MemoList = ({ labelId, memos }) => {
   if (Object.keys(memos).length == 0) {
     return <EmptyMemoList />
   } else {
-    return <ul className="list-group">
+    return <ul id="memo-list" className="list-group">
       {Object.keys(memos).map(id =>
         <MemoItem key={id} id={id} memo={memos[id]} labelId={labelId} />)
       }

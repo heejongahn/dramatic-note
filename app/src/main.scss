@@ -1,7 +1,33 @@
 /* Sitewise attributes */
 
-ul#label-list, div#memo-list, div#memo {
-  max-height: calc(100vh - 4em);
+
+html, body, div#app {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+section#new-memo-panel {
+  height: 30%;
+}
+
+section#containers {
+  height: 70%;
+}
+
+div#label-container, div#memo-container {
+  height: 75%;
+}
+
+div#memo-list-column, div#memo {
+  height: 100%;
+}
+
+ul#label-list, ul#memo-list, ul#label-dropdown-list {
+  height: 85%;
+  overflow-y: scroll;
+}
+
+div#memo {
   overflow-y: scroll;
 }
 
@@ -11,10 +37,6 @@ html a {
   & :link, :visited, :hover, :active {
     text-decoration: none;
   }
-}
-
-div.container {
-  margin: 2em auto;
 }
 
 span#new-memo-helper, span#new-label-helper {
@@ -72,6 +94,10 @@ ul#labels-dropdown-list {
 
 /* MemoList */
 
+ul#memo-list {
+  padding-bottom: 0;
+}
+
 b.memo-item-title {
   font-size: 1.2em;
 }
@@ -89,6 +115,8 @@ span.memo-item-date, span#memo-date {
 /* General styling for all MemoPanels */
 
 div.memo-panel {
+  margin-bottom: 0;
+
   div.panel-heading {
     background-color: #414a4c;
     color: white;

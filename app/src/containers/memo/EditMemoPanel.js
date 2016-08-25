@@ -15,7 +15,7 @@ const EditMemoPanel = ({ params, memo, dispatch } ) => {
 
   if (memo) {
     return (
-      <div className="panel panel-default edit-memo memo-panel">
+      <div id="edit-memo" className="panel panel-default memo-panel">
         <div className="panel-heading">
           <div className="panel-title">
             <input type="text" defaultValue={memo.title} id="memo-title"/>
