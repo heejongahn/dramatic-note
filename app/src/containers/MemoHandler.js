@@ -2,9 +2,10 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { selectMemos, deleteMemos, unselectAllMemos } from '../actions'
+import { selectMemos, deleteMemos, unselectAllMemos,
+  addLabelToMemos, removeLabelFromMemos} from '../actions'
 
-const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
+const MemoHandler = ({ checkedMemoIds, labels, memoIds, dispatch }) => {
   const onAllMemosToggle = (e) => {
     if (e.target.checked) {
       dispatch(selectMemos(memoIds))
@@ -13,11 +14,25 @@ const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
     }
   }
 
+  const onDropdownCheckboxToggle = (e, labelId) => {
+    if (e.target.checked) {
+      dispatch(addLabelToMemos(labelId, checkedMemoIds))
+    } else {
+      dispatch(removeLabelFromMemos(labelId, checkedMemoIds))
+    }
+  }
+
+  const hasMemoWithLabel = (memoIds, labelId) => {
+    return memoIds.map(memoId => {
+      return labels[labelId].memoIds.includes(memoId)
+    }).includes(true)
+  }
+
   return (
     <div>
       <span className="btn btn-default">
         <input type="checkbox"
-          checked={memoIds.length > 0 &&checkedMemoIds.length == memoIds.length}
+          checked={memoIds.length > 0 && checkedMemoIds.length == memoIds.length}
           onChange={(e)=>onAllMemosToggle(e)}
           disabled={memoIds.length == 0}/>
       </span>
@@ -32,11 +47,16 @@ const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
           <span className="caret"></span>
         </button>
         <ul className="dropdown-menu" aria-labelledby="labelsDropdown">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" className="divider"></li>
-          <li><a href="#">Separated link</a></li>
+          {Object.keys(labels).map(labelId => {
+            return (
+              <li>
+                <input type="checkbox"
+                  checked={hasMemoWithLabel(checkedMemoIds, labelId)}
+                  onChange={(e)=>onDropdownCheckboxToggle(e, labelId)}/>
+                {labels[labelId].name}
+              </li>
+            )}
+          )}
         </ul>
       </div>
     </div>
@@ -45,7 +65,7 @@ const MemoHandler = ({ memoIds, checkedMemoIds, dispatch }) => {
 
 const mapStateToProps = (state, ownProps) => (
   Object.assign({},
-    { checkedMemoIds: state.checkedMemoIds },
+    { checkedMemoIds: state.checkedMemoIds, labels: state.labels },
     ownProps)
 )
 
