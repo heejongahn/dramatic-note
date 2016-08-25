@@ -19,11 +19,11 @@ const EditMemoPanel = ({ params, memo, dispatch } ) => {
       <div className="panel panel-default edit-memo memo-panel">
         <div className="panel-heading">
           <div className="panel-title">
-            <input type="text" defaultValue={memo.title} className="memo-title"/>
+            <input type="text" defaultValue={memo.title} id="memo-title"/>
           </div>
         </div>
         <div className="panel-body">
-          <textarea className="memo-body" rows="15">
+          <textarea id="memo-body" rows="15">
             {memo.body}
           </textarea>
         </div>

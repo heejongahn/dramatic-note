@@ -55,6 +55,10 @@ input#new-label-name {
 
 /* MemoContainer */
 
+div#memo-handler {
+  margin-bottom: 2em;
+}
+
 div#labels-dropdown {
   position: absolute;
   top: 0;
@@ -66,21 +70,23 @@ ul#labels-dropdown-list {
   visibility: hidden;
 }
 
-/* (New, Edit)MemoPanel */
+/* MemoList */
 
-input.memo-title, input.new-memo-title {
-  width: 100%;
-  background: 0;
-  border: 0;
+b.memo-item-title {
+  font-size: 1.2em;
 }
 
-textarea.memo-body, textarea.new-memo-body {
-  resize: none;
-  width: 100%;
-  border: 0;
-  margin: 0;
-  padding: 0;
+p.memo-item-preview {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+span.memo-item-date, span#memo-date {
+  font-size: 0.8em;
+}
+
+/* General styling for all MemoPanels */
 
 div.memo-panel {
   div.panel-heading {
@@ -103,28 +109,47 @@ div.memo-panel {
   }
 }
 
-div.memo-body {
-  white-space: pre-line;
+/* NewMemoPanel */
+
+input#new-memo-title {
+  width: 100%;
+  background: 0;
+  border: 0;
 }
 
-a.memo-edit {
+textarea#new-memo-body {
+  resize: none;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* EditMemoPanel */
+input#memo-title {
+  width: 100%;
+  background: 0;
+  border: 0;
+}
+
+textarea#memo-body {
+  resize: none;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* MemoPanel */
+
+a#memo-edit {
   margin-left: 2em;
 }
 
-button.memo-delete {
+button#memo-delete {
   margin: auto 0.5em;
 }
 
-b.memo-item-title {
-  font-size: 1.2em;
-}
-
-p.memo-item-preview {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-span.memo-item-date, span.memo-date {
-  font-size: 0.8em;
+div#memo-body {
+  white-space: pre-line;
 }

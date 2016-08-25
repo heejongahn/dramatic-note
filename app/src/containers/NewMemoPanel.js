@@ -34,11 +34,11 @@ const NewMemoPanel = ({ dispatch } ) => {
       <div className="panel panel-default memo-panel">
         <div className="panel-heading">
           <div className="panel-title">
-            <input type="text" className="new-memo-title" placeholder="제목"/>
+            <input type="text" id="new-memo-title" placeholder="제목"/>
           </div>
         </div>
         <div className="panel-body">
-          <textarea className="new-memo-body" placeholder="내용" rows="4">
+          <textarea id="new-memo-body" placeholder="내용" rows="4">
           </textarea>
         </div>
         <div className="panel-footer">

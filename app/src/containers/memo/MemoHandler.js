@@ -43,7 +43,7 @@ const MemoHandler = ({ memoIds, checkedMemoIds, labels, currentLabelId, dispatch
   }
 
   return (
-    <div className="btn-group btn-group-justified" role="group">
+    <div id="memo-handler" className="btn-group btn-group-justified" role="group">
       <div className="btn-group" role="group">
         <span className="btn btn-default">
           <input type="checkbox"
