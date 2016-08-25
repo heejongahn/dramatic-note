@@ -21,7 +21,7 @@ div#memo-list-column {
 
 ul#label-list, ul#memo-list {
   height: 85%;
-  padding: 1em 0;
+  padding-bottom: 1em;
   overflow-y: scroll;
 }
 
@@ -109,6 +109,18 @@ p.memo-item-preview {
 
 span.memo-item-date, span#memo-date {
   font-size: 0.8em;
+}
+
+div#empty-memo-list {
+  word-break: keep-all;
+
+  h1 {
+    font-size: 56px;
+  }
+
+  div.jumbotron {
+    margin-bottom: 0;
+  }
 }
 
 /* General styling for all MemoPanels */

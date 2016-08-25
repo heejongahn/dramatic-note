@@ -2,12 +2,10 @@ import React from 'react'
 
 const EmptyMemoList = () => {
   return (
-    <div className="panel panel-default memo-panel">
-      <div className="panel-heading">
-        <h3 className="panel-title">해당 라벨이 붙은 메모가 없습니다.</h3>
-      </div>
-      <div className="panel-body">
-        ~_~
+    <div id="empty-memo-list" className="panel panel-default memo-panel">
+      <div className="jumbotron">
+        <h1>메모 없음</h1>
+        <p>이 라벨이 붙어 있는 메모가 없습니다. 지금 바로 라벨을 붙여보세요!</p>
       </div>
     </div>
   )
