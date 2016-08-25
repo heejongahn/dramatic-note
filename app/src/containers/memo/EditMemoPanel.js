@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { connect } from 'react-redux'
 
-import { updateMemo } from '../actions'
+import { updateMemo } from '../../actions'
 
 
 const EditMemoPanel = ({ params, memo, dispatch } ) => {

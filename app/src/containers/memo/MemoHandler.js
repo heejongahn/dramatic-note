@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { selectMemos, deleteMemos, unselectAllMemos,
-  addLabelToMemos, removeLabelFromMemos} from '../actions'
+  addLabelToMemos, removeLabelFromMemos} from '../../actions'
 
 const MemoHandler = ({ memoIds, checkedMemoIds, labels, currentLabelId, dispatch }) => {
   const onAllMemosToggle = (e) => {

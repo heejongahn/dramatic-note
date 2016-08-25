@@ -9,10 +9,10 @@ import NewMemoPanel from './NewMemoPanel'
 const App = ({ children, memos, labels, params }) => {
   return (
     <div>
-      <section className="row">
+      <section id="newMemoPanel" className="row">
         <NewMemoPanel />
       </section>
-      <section className="row">
+      <section id="containers" className="row">
         <LabelContainer
           labels={labels}
           totalNumMemos={Object.keys(memos).length}

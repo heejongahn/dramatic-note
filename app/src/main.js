@@ -8,7 +8,8 @@ import thunkMiddleware from 'redux-thunk'
 
 import { syncWithDB } from './actions'
 import reducers from './reducers'
-import { App, MemoContainer, MemoPanel, EditMemoPanel } from './containers'
+import { App, MemoContainer } from './containers'
+import { MemoPanel, EditMemoPanel } from './containers/memo'
 
 import './main.scss'
 import 'bootstrap/dist/css/bootstrap.css'
