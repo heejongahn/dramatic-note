@@ -21,7 +21,7 @@ span#new-memo-helper, span#new-label-helper {
   height: 1em;
 }
 
-/* LabelItem */
+/* LabelContainer */
 
 ul#label-list {
   margin-bottom: 0;
@@ -30,6 +30,10 @@ ul#label-list {
 li.label-item {
   position: relative;
   color: #414a4c;
+
+  span.label-name {
+    margin-right: 1em;
+  }
 
   button {
     position: absolute;
@@ -49,7 +53,7 @@ input#new-label-name {
   width: 100%;
 }
 
-/* MemoPanels */
+/* MemoContainer */
 
 div#labels-dropdown {
   position: absolute;
@@ -61,6 +65,8 @@ div#labels-dropdown {
 ul#labels-dropdown-list {
   visibility: hidden;
 }
+
+/* (New, Edit)MemoPanel */
 
 input.memo-title, input.new-memo-title {
   width: 100%;

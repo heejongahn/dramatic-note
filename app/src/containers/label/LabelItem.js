@@ -59,7 +59,7 @@ const LabelItem = ({ id, label, selected, dispatch }) => {
           onBlur={()=>onUpdateLabel()}>
           {label.name}
         </span>
-        <span> [{label.numMemos}]</span>
+        <span className="badge">{label.numMemos}</span>
       </Link>
       { editLabelButton }
     </li>
