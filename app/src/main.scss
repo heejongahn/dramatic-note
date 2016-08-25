@@ -17,6 +17,10 @@ div.container {
   margin: 2em auto;
 }
 
+span#new-memo-helper, span#new-label-helper {
+  height: 1em;
+}
+
 /* LabelItem */
 
 ul#label-list {
