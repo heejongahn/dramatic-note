@@ -6,8 +6,8 @@ import { createMemo } from '../actions'
 
 const NewMemoPanel = ({ dispatch } ) => {
   const onCreateMemo = () => {
-    const titleInput = document.getElementsByClassName("new-memo-title")[0]
-    const bodyTextarea = document.getElementsByClassName("new-memo-body")[0]
+    const titleInput = document.getElementById("new-memo-title")
+    const bodyTextarea = document.getElementById("new-memo-body")
 
     const newMemoFormGroup = document.getElementById("new-memo")
     const newMemoHelper = document.getElementById("new-memo-helper")

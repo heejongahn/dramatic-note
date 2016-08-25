@@ -5,11 +5,10 @@ import { connect } from 'react-redux'
 
 import { updateMemo } from '../../actions'
 
-
 const EditMemoPanel = ({ params, memo, dispatch } ) => {
   const onEditMemo = () => {
-    const title = document.getElementsByClassName("memo-title")[0].value
-    const body = document.getElementsByClassName("memo-body")[0].value
+    const title = document.getElementById("memo-title").value
+    const body = document.getElementById("memo-body").value
 
     return dispatch(updateMemo(params.memoId, title, body))
   }
