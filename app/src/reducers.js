@@ -163,17 +163,14 @@ const reducers = (state = initialState, action) => {
             state.labels,
             { [action.id]: action.label }),
 
-          memos: Object.keys(state.memos)
-          .map(id => {
-            if (action.memoIds.includes(id)) {
-              return collectObject(
-                state.memos[id],
-                { labelIds: state.memos[id].labelIds.concat([action.id]) }
-              )
-            } else {
-              return state.memos[id]
-            }
-          })
+          memos: Object.assign({},
+            ...Object.keys(state.memos)
+            .map(id => (
+              { [id]: (action.memoIds.includes(id))
+                      ? collectObject(state.memos[id],
+                        { labelIds: state.memos[id].labelIds.concat([action.id]) })
+                      : state.memos[id] }))
+          )
         }
       )
 
@@ -185,17 +182,14 @@ const reducers = (state = initialState, action) => {
             state.labels,
             { [action.id]: action.label }),
 
-          memos: Object.keys(state.memos)
-          .map(id => {
-            if (action.memoIds.includes(id)) {
-              return collectObject(
-                state.memos[id],
-                { labelIds: state.memos[id].labelIds.filter(id => id != action.id)}
-              )
-            } else {
-              return state.memos[id]
-            }
-          })
+          memos: Object.assign({},
+            ...Object.keys(state.memos)
+            .map(id => (
+              { [id]: (action.memoIds.includes(id))
+                      ? collectObject(state.memos[id],
+                        { labelIds: state.memos[id].labelIds.filter(id => id != action.id) })
+                      : state.memos[id] }))
+          )
         })
 
     default:
