@@ -59,10 +59,15 @@ li.label-item {
 
   span.label-name {
     margin-right: 1em;
+    word-break: break-all;
   }
 
   input.label-name-edit {
     display: none;
+    height: 20px;
+    padding: 0;
+    border: 0;
+    background: 0;
   }
 
   button.btn, a.btn {
@@ -78,6 +83,10 @@ li.label-item.selected {
   }
   a.btn {
     color: black;
+  }
+
+  input.label-name-edit {
+    color: white;
   }
 }
 

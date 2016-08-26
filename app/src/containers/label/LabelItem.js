@@ -58,7 +58,7 @@ const LabelItem = ({ id, label, selected, dispatch }) => {
       <Link to={`/${id}`} onClick={()=>{
         document.getElementById("labels-dropdown-list").style.visibility="hidden"
         dispatch(uncheckAllMemos())}}>
-        <span id={`label-name-${id}`}>
+        <span id={`label-name-${id}`} className="label-name-group">
           <span className="label-name">
             {label.name}
           </span>
