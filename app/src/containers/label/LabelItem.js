@@ -6,15 +6,18 @@ import { updateLabel, uncheckAllMemos } from '../../actions'
 
 const toggleEditable = (id) => {
   const labelNameSpan = document.getElementById(`label-name-${id}`)
+  const labelNameEdit = document.getElementById(`label-name-edit-${id}`)
   const labelUpdateBtn = document.getElementById(`label-update-${id}`)
 
-  if (labelNameSpan.contentEditable=="true") {
-    labelNameSpan.contentEditable = "false"
-    labelUpdateBtn.style.visibility = "visible"
+  if (labelNameSpan.style.display == "none") {
+    labelNameSpan.style.display = "inline"
+    labelUpdateBtn.style.display = "inline"
+    labelNameEdit.style.display = "none"
   } else {
-    labelNameSpan.contentEditable = "true"
-    labelNameSpan.focus()
-    labelUpdateBtn.style.visibility = "hidden"
+    labelNameSpan.style.display = "none"
+    labelUpdateBtn.style.display = "none"
+    labelNameEdit.style.display = "inline"
+    labelNameEdit.focus()
   }
 }
 
@@ -28,8 +31,8 @@ const preventLineBreak = (e) => {
 
 const LabelItem = ({ id, label, selected, dispatch }) => {
   const onUpdateLabel = () => {
-    const labelNameSpan = document.getElementById(`label-name-${id}`)
-    const newLabelName = labelNameSpan.innerHTML
+    const labelNameEdit = document.getElementById(`label-name-edit-${id}`)
+    const newLabelName = labelNameEdit.value
 
     dispatch(updateLabel(id, newLabelName))
     toggleEditable(id)
@@ -45,6 +48,7 @@ const LabelItem = ({ id, label, selected, dispatch }) => {
           수정
         </button>
 
+
   const labelItemClass = selected
     ? "list-group-item label-item selected"
     : "list-group-item label-item"
@@ -54,14 +58,18 @@ const LabelItem = ({ id, label, selected, dispatch }) => {
       <Link to={`/${id}`} onClick={()=>{
         document.getElementById("labels-dropdown-list").style.visibility="hidden"
         dispatch(uncheckAllMemos())}}>
-        <span
-          id={`label-name-${id}`}
-          className="label-name"
-          onKeyPress={(e)=>preventLineBreak(e)}
-          onBlur={()=>onUpdateLabel()}>
-          {label.name}
+        <span id={`label-name-${id}`}>
+          <span className="label-name">
+            {label.name}
+          </span>
+          <span className="badge">{label.numMemos}</span>
         </span>
-        <span className="badge">{label.numMemos}</span>
+        <input
+          id={`label-name-edit-${id}`}
+          className="form-control label-name-edit"
+          defaultValue={label.name}
+          onKeyPress={(e)=>preventLineBreak(e)}
+          onBlur={()=>{onUpdateLabel()}} />
       </Link>
       { labelItemButton }
     </li>

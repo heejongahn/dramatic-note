@@ -61,6 +61,10 @@ li.label-item {
     margin-right: 1em;
   }
 
+  input.label-name-edit {
+    display: none;
+  }
+
   button.btn, a.btn {
     position: absolute;
     right: 2em;
