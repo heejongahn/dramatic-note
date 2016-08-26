@@ -51,7 +51,9 @@ const LabelItem = ({ id, label, selected, dispatch }) => {
 
   return (
     <li className={labelItemClass}>
-      <Link to={`/${id}`} onClick={()=>dispatch(uncheckAllMemos())}>
+      <Link to={`/${id}`} onClick={()=>{
+        document.getElementById("labels-dropdown-list").style.visibility="hidden"
+        dispatch(uncheckAllMemos())}}>
         <span
           id={`label-name-${id}`}
           className="label-name"
