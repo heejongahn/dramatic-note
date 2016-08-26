@@ -4,8 +4,9 @@
   "description": "Keep your dramatic notes with this simple SPA web app.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "build": "node_modules/.bin/webpack",
+    "watch": "node_modules/.bin/webpack --watch",
+    "start": "python run.py"
   },
   "repository": {
     "type": "git",
