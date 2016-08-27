@@ -6,9 +6,17 @@ const apiCallAndDispatch = (url, method, body, actionCreator, dispatch) => {
   const headers = new Headers({ "Content-type": "application/json" })
 
   return fetch(url, { method, headers, body})
-  .then(response => response.json())
+  .then(response => {
+    if (response.ok) {
+      return response.json()
+    }
+    throw(Error(response.statusText))
+  })
   .then(result => {
     dispatch(actionCreator(result['result']))
+  })
+  .catch(e => {
+    dispatch(syncWithDB())
   })
 }
 
