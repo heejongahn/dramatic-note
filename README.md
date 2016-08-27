@@ -2,6 +2,11 @@
 
 드라마앤컴퍼니 웹 개발 그룹 면접 과제로 제작한 single page application 입니다.
 
+# 사용 버전
+
+- Python 3.5.1
+- Node 6.0.0
+
 # 실행 스크립트
 
 ```bash
