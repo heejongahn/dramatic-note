@@ -8,7 +8,7 @@ import { checkMemos, deleteMemos, uncheckAllMemos,
 const MemoHandler = ({ memoIds, checkedMemoIds, labels, currentLabelId, dispatch }) => {
   const onAllMemosToggle = (e) => {
     if (e.target.checked) {
-      dispatch(checkMemos(memoIds))
+      dispatch(checkMemos({ ids: memoIds }))
     } else {
       dispatch(uncheckAllMemos())
     }

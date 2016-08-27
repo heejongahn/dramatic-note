@@ -46,8 +46,7 @@ export const localCreateLabel = ({ id, label }) => (
   { type: CREATE_LABEL, id, label })
 
 export const localUpdateLabel = ({ id, label }) => (
-  { type: UPDATE_LABEL, id, label }
-)
+  { type: UPDATE_LABEL, id, label })
 
 export const localDeleteLabel = ({ id }) => (
   { type: DELETE_LABEL, id })
@@ -104,8 +103,7 @@ export const localCreateMemo = ({ id, memo, labelId }) => (
   { type: CREATE_MEMO, id, memo, labelId })
 
 export const localUpdateMemo = ({ id, memo }) => (
-  { type: UPDATE_MEMO, id, memo }
-)
+  { type: UPDATE_MEMO, id, memo })
 
 export const localDeleteMemo = ({ id }) => (
   { type: DELETE_MEMO, id })
@@ -116,13 +114,11 @@ export const localDeleteMemos = ({ ids }) => (
 export const toggleCheckMemo = ({ id }) => (
   { type: TOGGLE_CHECK_MEMO, id })
 
-export const checkMemos = (ids) => (
-  { type: CHECK_MEMOS, ids }
-)
+export const checkMemos = ({ ids }) => (
+  { type: CHECK_MEMOS, ids })
 
 export const uncheckAllMemos = () => (
-  { type: UNCHECK_ALL_MEMOS }
-)
+  { type: UNCHECK_ALL_MEMOS })
 
 /* Async action creators */
 export const createMemo = (title, body, labelId) => {
@@ -182,12 +178,10 @@ export const ADD_LABEL_TO_MEMOS = 'ADD_LABEL_TO_MEMOS'
 export const REMOVE_LABEL_FROM_MEMOS = 'REMOVE_LABEL_FROM_MEMOS'
 
 export const localAddLabelToMemos = ({ id, label, memoIds }) => (
-  { type: ADD_LABEL_TO_MEMOS, id, label, memoIds }
-)
+  { type: ADD_LABEL_TO_MEMOS, id, label, memoIds })
 
 export const localRemoveLabelFromMemos = ({ id, label, memoIds }) => (
-  { type: REMOVE_LABEL_FROM_MEMOS, id, label, memoIds }
-)
+  { type: REMOVE_LABEL_FROM_MEMOS, id, label, memoIds })
 
 export const addLabelToMemos = (labelId, memoIds) => {
   return (dispatch) => {
